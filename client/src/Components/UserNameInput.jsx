@@ -1,14 +1,18 @@
 ///craete validation for user name input
 
-export default function UserNameInput () {
+export default function UserNameInput ({ onNameInput }) {
 
-  function handleInputChange () {
-    
+  function handleInputChange (event) {
+    const userName = event.target.value;
+    onNameInput(userName);
+    console.log(userName);
   }
 
   return (
     <>
-      <input type="text" onChange={handleInputChange}/>
+      <label> User name:
+        <input type="text" onChange={handleInputChange}/>
+      </label>
     </>
   )
 }

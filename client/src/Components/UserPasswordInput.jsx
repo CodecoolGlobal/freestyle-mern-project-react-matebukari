@@ -1,14 +1,18 @@
 ///craete validation for user password input
 
-export default function UserPasswordInput () {
+export default function UserPasswordInput ({ onPasswordInput }) {
 
-  function handleInputChange () {
-    
+  function handleInputChange (event) {
+    const userPassword = event.target.value;
+    onPasswordInput(userPassword);
+    console.log(userPassword);
   }
 
   return (
     <>
-      <input type="text" onChange={handleInputChange}/>
+      <label> User Password:
+        <input type="text" onChange={handleInputChange}/>
+      </label>
     </>
   )
 }
