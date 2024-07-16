@@ -48,6 +48,25 @@ app.post('/api/user', async (req, res) => {
   }
 });
 
+app.post('/api/user/login', async (req, res) => {
+  const user = req.body;
+  const existingUser = await User.findOne({
+    name: user.userName,
+    password: user.userPassword 
+  });
+
+  if (existingUser) {
+    return res.status(200).json({ success: true, message: 'Should login', user: existingUser });
+  }
+
+  res.status(400).json({ success: false });
+
+});
+
+app.get('/api/question', async (req, res) => {
+  
+});
+
 app.listen(PORT, () => {
   console.log(`Server running on ${PORT}`);
 })
