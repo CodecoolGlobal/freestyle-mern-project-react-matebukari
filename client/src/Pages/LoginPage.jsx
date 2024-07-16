@@ -6,11 +6,11 @@ export default function LoginPage () {
 
   const [userName, setUserName] = useState('');
   const [userPassword, setUserPassword] = useState('');
-  const [validUser, setValidUser] = useState(false);
+  const [validLogin, setValidLogin] = useState(false);
 
   async function handleLoginClick () {
-    ///fetch
-    setValidUser(true);
+    
+    setValidLogin(true);
   }
 
 return (
