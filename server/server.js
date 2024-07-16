@@ -1,8 +1,14 @@
-import { log } from 'console';
+import dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
 import path from 'path';
 import url from 'url';
+
+
+
+dotenv.config();
+
+mongoose.connect(process.env.MONGO_URL);
 
 const app = express();
 const PORT = 4000;
