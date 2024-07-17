@@ -12,6 +12,7 @@ const questionSchema = new Schema({
   },
   correctAnswer: String,
   difficulty: Number,
+  user: [{type: Schema.Types.String, ref: 'User'}],
   createdAt: Date,
   updatedAt: Date,
   ///image maybe

@@ -1,5 +1,6 @@
-export default function AddQuestionModal () {
-  function handleSubmit (event) {
+export default function AddQuestionModal ({user}) {
+  
+  async function handleSubmit (event) {
     event.preventDefault();
     const questionData = new FormData(event.target)
     const question = {
@@ -9,11 +10,20 @@ export default function AddQuestionModal () {
         answerB: questionData.get('answerB'),
         answerC: questionData.get('answerC'),
         answerD: questionData.get('answerD'),
-        correctAnswer: questionData.get('correctAnswer'),
-        difficulty: questionData.get('difficulty'),
-      }
+      },
+      user: user['_id'],
+      correctAnswer: questionData.get('correctAnswer'),
+      difficulty: questionData.get('difficulty'),
     }
+    console.log(user);
     console.log(question);
+    const response = await fetch('/api/question', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(question)
+    });
+    const result = await response.json();
+    console.log(result);
   }
 
   return (

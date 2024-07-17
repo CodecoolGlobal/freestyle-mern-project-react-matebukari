@@ -19,7 +19,7 @@ export default function LoginPage() {
       });
       const result = await ressposne.json();
       setValidLogin(result.success);
-
+      console.log(result.user);
       if (result.success) {
         console.log('anyu');
         navigate('/game',{

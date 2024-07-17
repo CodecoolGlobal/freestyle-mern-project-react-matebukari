@@ -21,7 +21,7 @@ export default function GamePage() {
     {!gameStart && <>
       <button onClick={handleGameStart}>Start</button>
       <button onClick={handleAddQuestion}>Add question</button>
-      {showQuestionModal && <AddQuestionModal/>}
+      {showQuestionModal && <AddQuestionModal user={userData}/>}
     </>}
     {gameStart && 
     <></>

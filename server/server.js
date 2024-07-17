@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import path from 'path';
 import url from 'url';
 import User from './model/User.js';
+import Question from './model/Question.js';
 
 dotenv.config();
 
@@ -35,11 +36,11 @@ async function createUser ({ userName, userPassword }) {
 app.post('/api/user', async (req, res) => {
   const user = req.body;
   const existingUser = await User.findOne({ name: user.userName });
-
+  
   if (existingUser) {
     return res.status(400).json({ success: false, message: 'User already exists' });
   }
-
+  
   try {
     await createUser(user);
     res.json({user: await User.find(), success: true});
@@ -54,21 +55,46 @@ app.post('/api/user/login', async (req, res) => {
     name: user.userName,
     password: user.userPassword 
   });
-
+  
   if (existingUser) {
     return res.status(200).json({ success: true, message: 'Should login', user: existingUser });
   }
-
+  
   res.status(400).json({ success: false });
-
-});
-
-app.get('/api/question', async (req, res) => {
   
 });
 
-app.post('/api/question', (req, res) => {
-  
+async function createQuestion (questionData) {
+  try {
+    const question = await Question.create({
+      question: questionData.question,
+      answers: questionData.answers,
+      correctAnswer: questionData.correctAnswer,
+      difficulty: Number(questionData.difficulty),
+      user: questionData.user,
+      createdAt: Date.now(),
+      updatedAt: Date.now(),
+      })
+  } catch (error) {
+    console.log(error);
+  }
+}
+app.get('/api/questions', async (req, res) => {
+  res.json(await Question.find().populate('user'))
+});
+
+app.get('/api/questions-by-id/:id', async (req, res) => {
+  res.json(await Question.find({user: req.params.id}).populate('user'))
+});
+app.post('/api/question', async (req, res) => {
+  const question = req.body;
+  try {
+    await createQuestion(question);
+    return res.status(200).json({ success: true, message: 'Question created'});
+  } catch (error) {
+    console.error(error);
+    res.status(400).json({ success: false, message: 'Creation failed', error: error});
+  }
 })
 
 app.listen(PORT, () => {
