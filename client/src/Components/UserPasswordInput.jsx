@@ -11,7 +11,7 @@ export default function UserPasswordInput ({ onPasswordInput }) {
   return (
     <>
       <label> User Password:
-        <input type="text" onChange={handleInputChange}/>
+        <input type="password" onChange={handleInputChange}/>
       </label>
     </>
   )

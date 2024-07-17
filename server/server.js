@@ -33,6 +33,36 @@ async function createUser ({ userName, userPassword }) {
   }
 }
 
+function shuffleQuestions(questions) {
+  for (let i = questions.length - 1; i > 0; i--){
+    let j = Math.floor(Math.random() * (i + 1));
+    let temp = questions[i];
+    questions[i] = questions[j];
+    questions[j] = temp;
+  }
+}
+
+function getRandomQuestions(difficulty, questions, numberOfQuestions){
+  const choosenQuestions = []
+  const filteredQuestions = questions.filter((question) => question.difficulty === difficulty);
+  shuffleQuestions(filteredQuestions);
+  for (let i = 0; i < numberOfQuestions; i++){
+    choosenQuestions.push(filteredQuestions[i]);
+  }
+  return choosenQuestions;
+}
+
+async function getGameQuestions (numberOfQuestions){
+  const allQuestions = await Question.find();
+  const gameQuestions = {
+    easy: getRandomQuestions(1 , allQuestions, numberOfQuestions),
+    medium: getRandomQuestions(2, allQuestions, numberOfQuestions),
+    hard: getRandomQuestions(3, allQuestions, numberOfQuestions),
+  };
+
+  return gameQuestions;
+}
+
 app.post('/api/user', async (req, res) => {
   const user = req.body;
   const existingUser = await User.findOne({ name: user.userName });
@@ -79,7 +109,7 @@ async function createQuestion (questionData) {
     console.log(error);
   }
 }
-app.get('/api/questions', async (req, res) => {
+app.get('/api/questions-all', async (req, res) => {
   res.json(await Question.find().populate('user'))
 });
 
@@ -94,6 +124,17 @@ app.post('/api/question', async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(400).json({ success: false, message: 'Creation failed', error: error});
+  }
+})
+
+app.get('/api/questions-ingame', async (req, res) => {
+  const questionsPerDifficulty = 1;
+  const questions = await getGameQuestions(questionsPerDifficulty);
+  try {
+    return res.status(200).json({ success: true, message: 'Questions sent!', questions: questions});
+  } catch (error) {
+    console.error(error);
+    res.status(400).json({ success: false, message: 'Failed to get questions!', error: error});
   }
 })
 
