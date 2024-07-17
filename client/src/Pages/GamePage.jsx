@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import AddQuestionModal from "../Components/AddQuestionModal";
 import GameQuestion from "../Components/GameQuestion";
+import Answers from "../Components/Answers";
 
 export default function GamePage() {
   const location = useLocation();
@@ -22,7 +23,6 @@ export default function GamePage() {
   function handleAddQuestion () {
     setShowQuestionModal(true);
   }
-
   return (
     <div>
     {!gameStart && <>
@@ -33,6 +33,7 @@ export default function GamePage() {
     {gameStart && 
     <>
     {questions && <GameQuestion questions={questions} progress={progress}/>}
+    {questions && <Answers answers={questions[progress].answers} progress={progress} onProgress={setProgress} correctAnswer={questions[progress].correctAnswer}/>}
     <button onClick={() => setProgress((prev) => prev - 1)}>Prev</button>
     <button onClick={() => setProgress((prev) => prev + 1)}>Next</button>
     </>
