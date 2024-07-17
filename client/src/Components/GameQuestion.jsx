@@ -1,13 +1,11 @@
-function getRandomQuestion () {
-  fetch('/api/question')
-}
 
-export default function GameQuestion () {
 
+export default function GameQuestion ({questions, progress}) {
+  console.log(questions[progress]);
 
   return (
-    <div class='question-container'>
-      <h1 class='question'>`${}`</h1>
+    <div className='question-container'>
+      {<h1 className='question'>{questions[progress].question}</h1>}
     </div>
   )
 }

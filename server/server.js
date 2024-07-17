@@ -54,11 +54,11 @@ function getRandomQuestions(difficulty, questions, numberOfQuestions){
 
 async function getGameQuestions (numberOfQuestions){
   const allQuestions = await Question.find();
-  const gameQuestions = {
-    easy: getRandomQuestions(1 , allQuestions, numberOfQuestions),
-    medium: getRandomQuestions(2, allQuestions, numberOfQuestions),
-    hard: getRandomQuestions(3, allQuestions, numberOfQuestions),
-  };
+  const gameQuestions = [
+    ...getRandomQuestions(1 , allQuestions, numberOfQuestions),
+    ...getRandomQuestions(2, allQuestions, numberOfQuestions),
+    ...getRandomQuestions(3, allQuestions, numberOfQuestions)
+  ];
 
   return gameQuestions;
 }
@@ -128,7 +128,7 @@ app.post('/api/question', async (req, res) => {
 })
 
 app.get('/api/questions-ingame', async (req, res) => {
-  const questionsPerDifficulty = 1;
+  const questionsPerDifficulty = 3;
   const questions = await getGameQuestions(questionsPerDifficulty);
   try {
     return res.status(200).json({ success: true, message: 'Questions sent!', questions: questions});
