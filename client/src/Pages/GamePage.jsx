@@ -56,7 +56,8 @@ export default function GamePage() {
       <nav className="nav-bar">
       <button onClick={handleAddQuestion}>Add question</button>
       <div>{userData.name}
-      <img src="./d*ckpic.jpg" alt="d*ckpic" /></div>
+      {/* <img src="./d*ckpic.jpg" alt="d*ckpic" /> */}
+      </div>
       </nav>
     {!gameStart && <>
       <button onClick={handleGameStart}>Start</button>
