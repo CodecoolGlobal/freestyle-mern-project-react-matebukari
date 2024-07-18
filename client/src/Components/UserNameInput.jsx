@@ -10,8 +10,8 @@ export default function UserNameInput ({ onNameInput }) {
 
   return (
     <>
-      <label> User name:
-        <input type="text" onChange={handleInputChange}/>
+      <label className="user-name-label"> User name:
+        <input className="user-name-input" type="text" onChange={handleInputChange}/>
       </label>
     </>
   )

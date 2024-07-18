@@ -10,8 +10,8 @@ export default function UserPasswordInput ({ onPasswordInput }) {
 
   return (
     <>
-      <label> User Password:
-        <input type="password" onChange={handleInputChange}/>
+      <label className="user-password-label"> User Password:
+        <input className="user-password-input" type="password" onChange={handleInputChange}/>
       </label>
     </>
   )
