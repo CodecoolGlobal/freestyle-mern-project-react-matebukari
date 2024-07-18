@@ -1,0 +1,25 @@
+.progress-container {
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top */
+  right: 10%;
+  top: 10%;
+  width: 25%;
+  height: auto;
+  overflow: auto; /* Enable scroll if needed */
+}
+
+.progress-content {
+  font-size: 2rem;
+  font-weight: bold;
+  background-color: #434343;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #ffffff;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.progress-line {
+  display: flex;
+  justify-content: space-between;
+}
+

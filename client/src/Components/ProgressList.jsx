@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 
 export default function ProgressList ({ maxQuestions, prices, onPriceSet, progress}) {
 
+
   useEffect(() => {
-    let prevPrices = [0, 15000];
+    let prevPrices = [15000, 0];
     let newPrices = [];
 
     for (let i = 0; i < maxQuestions; i++) {
@@ -30,9 +31,9 @@ export default function ProgressList ({ maxQuestions, prices, onPriceSet, progre
     <div className="progress-container">
       <div className="progress-content">
         {prices.map((value, i) => (
-          <div className="progress-line" style={{background: progress === i ? 'white' : 'none'}}key={`progress-${i}`}>
+          <div className="progress-line" style={{background: progress === i ? 'rgba(255, 255, 255, 0.8)' : 'none', color: progress === i ? 'black' : 'white'}}key={`progress-${i}`}>
             <div className="level"> {i + 1} </div>
-            <div className="price"> {value} </div>
+            <div className="price"> {`${new Intl.NumberFormat('en-HU').format(value)} Ft`} </div>
           </div>
         ))}
       </div>
