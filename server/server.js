@@ -21,7 +21,7 @@ app.use(express.static(path.join(dirname, "../client")));
 
 async function createUser ({ userName, userPassword }) {
   try {
-    const user = await User.create({
+    await User.create({
       name: userName,
       password: userPassword,
       score: 0,
@@ -96,7 +96,7 @@ app.post('/api/user/login', async (req, res) => {
 
 async function createQuestion (questionData) {
   try {
-    const question = await Question.create({
+    await Question.create({
       question: questionData.question,
       answers: questionData.answers,
       correctAnswer: questionData.correctAnswer,
@@ -109,6 +109,7 @@ async function createQuestion (questionData) {
     console.log(error);
   }
 }
+
 app.get('/api/questions-all', async (req, res) => {
   res.json(await Question.find().populate('user'))
 });

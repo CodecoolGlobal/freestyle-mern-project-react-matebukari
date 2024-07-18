@@ -52,6 +52,7 @@ export default function GamePage() {
     setShowQuestionModal(true);
   }
 
+
   return (
     <div className="game-root">
       <nav className="nav-bar">
@@ -62,7 +63,7 @@ export default function GamePage() {
       </nav>
     {!gameStart && <>
       <button onClick={handleGameStart}>Start</button>
-      {showQuestionModal && <AddQuestionModal user={userData}/>}
+      {showQuestionModal && <AddQuestionModal user={userData} toggleModal={setShowQuestionModal}/>}
     </>}
     {gameStart && 
     <>
