@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import AddQuestionModal from "../Components/AddQuestionModal";
 import GameQuestion from "../Components/GameQuestion";
 import Answers from "../Components/Answers";
 import WinModal from "../Components/WinModal";
 import LosingModal from "../Components/LosingModal";
+import ProgressList from "../Components/ProgressList";
 
 export default function GamePage() {
   const location = useLocation();
@@ -15,6 +16,20 @@ export default function GamePage() {
   const [progress, setProgress] = useState(0);
   const [isWon, setIsWon] = useState(false)
   const [isLost, setIsLost] = useState(false)
+  const [score, setScore] = useState(0)
+  const [prices, setPrices] = useState([]);
+
+  function handleSaveScore(){
+    if ((progress + 1) % 3 === 0){
+      setScore(prices[progress])
+    }
+  } 
+
+  useEffect((score)=> {
+    handleSaveScore()
+
+  }, [isWon, isLost])
+
 
   function onReset(){
     setGameStart(false)
@@ -35,6 +50,7 @@ export default function GamePage() {
   function handleAddQuestion () {
     setShowQuestionModal(true);
   }
+
   return (
     <div className="game-root">
       <nav className="nav-bar">
@@ -48,19 +64,20 @@ export default function GamePage() {
     </>}
     {gameStart && 
     <>
-    {questions && <GameQuestion questions={questions} progress={progress}/>}
-    {questions && <Answers 
-      answers={questions[progress].answers} 
-      progress={progress} 
-      onProgress={setProgress} 
-      onWinning={setIsWon}
-      onLosing={setIsLost}
-      maxQuestions={questions.length}
-      correctAnswer={questions[progress].correctAnswer}/>}
-    <button onClick={() => setProgress((prev) => prev - 1)}>Prev</button>
-    <button onClick={() => setProgress((prev) => prev + 1)}>Next</button>
-    {isWon && <WinModal onReset={onReset}/>}
-    {isLost && <LosingModal onReset={onReset}/>}
+      {questions && <ProgressList maxQuestions={questions.length} prices={prices} onPriceSet={setPrices}/>}
+      {questions && <GameQuestion questions={questions} progress={progress}/>}
+      {questions && <Answers 
+        answers={questions[progress].answers} 
+        progress={progress} 
+        onProgress={setProgress} 
+        onWinning={setIsWon}
+        onLosing={setIsLost}
+        maxQuestions={questions.length}
+        correctAnswer={questions[progress].correctAnswer}/>}
+      <button onClick={() => setProgress((prev) => prev - 1)}>Prev</button>
+      <button onClick={() => setProgress((prev) => prev + 1)}>Next</button>
+      {isWon && <WinModal onReset={onReset} score={score}/>}
+      {isLost && <LosingModal onReset={onReset}/>}
 
     </>
     }

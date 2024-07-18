@@ -1,11 +1,12 @@
-export default function WinModal({onReset}) {
+export default function WinModal({onReset, score}) {
 
 
   return (
     <div className="winning-container">
       <div className="winning-content">
         <h1>Grat</h1>
-        <button onClick={onReset}> RESTART</button>
+        <h2>prize: {score}</h2>
+        <button onClick={onReset} > RESTART</button>
       </div>
     </div>
   )
