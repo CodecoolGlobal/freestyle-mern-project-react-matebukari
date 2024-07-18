@@ -15,7 +15,6 @@ const questionSchema = new Schema({
   user: [{type: Schema.Types.ObjectId, ref: 'User'}],
   createdAt: Date,
   updatedAt: Date,
-  ///image maybe
 });
 
 export default model('Question', questionSchema);
