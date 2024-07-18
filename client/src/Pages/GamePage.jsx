@@ -36,10 +36,14 @@ export default function GamePage() {
     setShowQuestionModal(true);
   }
   return (
-    <div>
+    <div className="game-root">
+      <nav className="nav-bar">
+      <button onClick={handleAddQuestion}>Add question</button>
+      <div>{userData.name}
+      <img src="./public/d*ckpic.jpg" alt="d*ckpic" /></div>
+      </nav>
     {!gameStart && <>
       <button onClick={handleGameStart}>Start</button>
-      <button onClick={handleAddQuestion}>Add question</button>
       {showQuestionModal && <AddQuestionModal user={userData}/>}
     </>}
     {gameStart && 
