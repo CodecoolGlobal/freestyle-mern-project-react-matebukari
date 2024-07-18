@@ -112,6 +112,19 @@
   text-shadow: 1px 1px 1px white;
 }
 
+.startBtn{
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top */
+  left: 35%;
+  bottom: 40%;
+  padding: 20px;
+  font-size: 10rem;
+  text-shadow: 2px 2px 2px white;
+  width: auto;
+  height: auto;
+  overflow: auto; /* Enable scroll if needed */
+}
+
 .nav-bar {
   margin: 0px;
   padding: 5px;

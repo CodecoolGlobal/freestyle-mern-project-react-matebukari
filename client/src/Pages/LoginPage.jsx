@@ -1,7 +1,7 @@
 import { useState } from "react";
 import UserNameInput from "../Components/UserNameInput";
 import UserPasswordInput from "../Components/UserPasswordInput";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./loginPage.css";
 
 export default function LoginPage() {
@@ -37,6 +37,8 @@ export default function LoginPage() {
       <UserNameInput onNameInput={setUserName} /> <br />
       <UserPasswordInput onPasswordInput={setUserPassword} /> <br />
       <button className="login-button" onClick={handleLoginClick}>Login</button>
+      <br></br>
+      <Link to={'/register'}>Register page</Link>
     </div>
   );
 }

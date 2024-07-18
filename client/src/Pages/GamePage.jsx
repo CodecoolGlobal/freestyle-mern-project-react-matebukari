@@ -6,7 +6,7 @@ import Answers from "../Components/Answers";
 import WinModal from "../Components/WinModal";
 import LosingModal from "../Components/LosingModal";
 import ProgressList from "../Components/ProgressList";
-import "./gamePage.css";
+import "./GamePage.css";
 
 export default function GamePage() {
   const location = useLocation();
@@ -62,7 +62,7 @@ export default function GamePage() {
       </div>
       </nav>
     {!gameStart && <>
-      <button onClick={handleGameStart}>Start</button>
+      <button className="startBtn" onClick={handleGameStart}>Start</button>
       {showQuestionModal && <AddQuestionModal user={userData} toggleModal={setShowQuestionModal}/>}
     </>}
     {gameStart && 
