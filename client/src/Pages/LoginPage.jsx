@@ -2,6 +2,7 @@ import { useState } from "react";
 import UserNameInput from "../Components/UserNameInput";
 import UserPasswordInput from "../Components/UserPasswordInput";
 import { useNavigate } from "react-router-dom";
+import "./loginPage.css";
 
 export default function LoginPage() {
   const [userName, setUserName] = useState("");
@@ -32,11 +33,10 @@ export default function LoginPage() {
   }
 
   return (
-    <div>
-
+    <div className="login-container">
       <UserNameInput onNameInput={setUserName} /> <br />
       <UserPasswordInput onPasswordInput={setUserPassword} /> <br />
-      <button onClick={handleLoginClick}>Login</button>
+      <button className="login-button" onClick={handleLoginClick}>Login</button>
     </div>
   );
 }

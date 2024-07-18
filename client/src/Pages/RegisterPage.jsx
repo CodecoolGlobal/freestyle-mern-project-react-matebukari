@@ -1,6 +1,7 @@
 import { useState } from "react";
 import UserNameInput from "../Components/UserNameInput";
 import UserPasswordInput from "../Components/UserPasswordInput";
+import "./registerPage.css"
 
 export default function RegisterPage() {
   const [userName, setUserName] = useState("");
@@ -22,7 +23,7 @@ export default function RegisterPage() {
   }
 
   return (
-    <div>
+    <div className="register-container">
       {validRegister ? (
         <h1>Succesfull registration!!!</h1>
       ) : validRegister !== null ? (
@@ -32,7 +33,7 @@ export default function RegisterPage() {
       )}
       <UserNameInput onNameInput={setUserName} /> <br />
       <UserPasswordInput onPasswordInput={setUserPassword} /> <br />
-      <button onClick={handleRegisterClick}>Register</button>
+      <button className="register-button" onClick={handleRegisterClick}>Register</button>
     </div>
   );
 }
