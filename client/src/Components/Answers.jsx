@@ -1,13 +1,21 @@
-export default function Answers ({answers, progress, correctAnswer, onProgress}){
+export default function Answers ({answers, progress, correctAnswer, onProgress, onWinning, onLosing, maxQuestions}){
   console.log(answers);
+
+
   function handleAnswer(event){
     if (event.target.id === correctAnswer) {
       console.log('Corrtect answer');
-      onProgress((prev) => prev + 1);
+      if (progress >= maxQuestions - 1){
+        onWinning(true)
+      } else {
+        onProgress((prev) => prev + 1);
+      }
     } else {
       console.log('worng answer');
+      onLosing(true)
     }
   }
+
 
   return (
     <div className="answers-container">

@@ -3,6 +3,8 @@ import { useLocation } from "react-router-dom";
 import AddQuestionModal from "../Components/AddQuestionModal";
 import GameQuestion from "../Components/GameQuestion";
 import Answers from "../Components/Answers";
+import WinModal from "../Components/WinModal";
+import LosingModal from "../Components/LosingModal";
 
 export default function GamePage() {
   const location = useLocation();
@@ -11,6 +13,16 @@ export default function GamePage() {
   const [showQuestionModal, setShowQuestionModal] = useState(false)
   const [questions, setQuestions] = useState(null);
   const [progress, setProgress] = useState(0);
+  const [isWon, setIsWon] = useState(false)
+  const [isLost, setIsLost] = useState(false)
+
+  function onReset(){
+    setGameStart(false)
+    setIsLost(false)
+    setProgress(0)
+    setIsWon(false)
+  }
+
 
   async function handleGameStart() {
     const response = await fetch('/api/questions-ingame');
@@ -33,9 +45,19 @@ export default function GamePage() {
     {gameStart && 
     <>
     {questions && <GameQuestion questions={questions} progress={progress}/>}
-    {questions && <Answers answers={questions[progress].answers} progress={progress} onProgress={setProgress} correctAnswer={questions[progress].correctAnswer}/>}
+    {questions && <Answers 
+      answers={questions[progress].answers} 
+      progress={progress} 
+      onProgress={setProgress} 
+      onWinning={setIsWon}
+      onLosing={setIsLost}
+      maxQuestions={questions.length}
+      correctAnswer={questions[progress].correctAnswer}/>}
     <button onClick={() => setProgress((prev) => prev - 1)}>Prev</button>
     <button onClick={() => setProgress((prev) => prev + 1)}>Next</button>
+    {isWon && <WinModal onReset={onReset}/>}
+    {isLost && <LosingModal onReset={onReset}/>}
+
     </>
     }
     </div>
