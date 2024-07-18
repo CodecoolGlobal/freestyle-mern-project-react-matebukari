@@ -6,7 +6,7 @@ import Answers from "../Components/Answers";
 import WinModal from "../Components/WinModal";
 import LosingModal from "../Components/LosingModal";
 import ProgressList from "../Components/ProgressList";
-import "./GamePage.css";
+import "./styles/gamePage.css";
 
 export default function GamePage() {
   const location = useLocation();
@@ -56,13 +56,17 @@ export default function GamePage() {
   return (
     <div className="game-root">
       <nav className="nav-bar">
-      <button onClick={handleAddQuestion}>Add question</button>
+      <button onClick={handleAddQuestion}>Add questions</button>
       <div>{userData.name}
       {/* <img src="./d*ckpic.jpg" alt="d*ckpic" /> */}
       </div>
       </nav>
     {!gameStart && <>
-      <button className="startBtn" onClick={handleGameStart}>Start</button>
+      <div className="startBtn-container">
+        <div className="startBtn-center">
+          <button className="startBtn" onClick={handleGameStart}>Start</button>
+        </div>
+      </div>
       {showQuestionModal && <AddQuestionModal user={userData} toggleModal={setShowQuestionModal}/>}
     </>}
     {gameStart && 
