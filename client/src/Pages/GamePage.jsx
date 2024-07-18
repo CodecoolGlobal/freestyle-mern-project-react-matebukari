@@ -6,6 +6,7 @@ import Answers from "../Components/Answers";
 import WinModal from "../Components/WinModal";
 import LosingModal from "../Components/LosingModal";
 import ProgressList from "../Components/ProgressList";
+import "./gamePage.css";
 
 export default function GamePage() {
   const location = useLocation();
