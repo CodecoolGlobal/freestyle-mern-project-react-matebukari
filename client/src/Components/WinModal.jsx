@@ -1,4 +1,4 @@
-import "../Pages/winModal.css"
+import "../Pages/styles/winModal.css"
 
 export default function WinModal({onReset, score}) {
   return (

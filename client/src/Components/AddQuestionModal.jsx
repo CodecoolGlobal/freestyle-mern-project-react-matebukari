@@ -1,4 +1,4 @@
-import "../Pages/addQuestionModal.css"
+import "../Pages/styles/addQuestionModal.css"
 
 export default function AddQuestionModal ({user, toggleModal}) {
   
@@ -28,34 +28,40 @@ export default function AddQuestionModal ({user, toggleModal}) {
     console.log(result);
   }
 
+  function handleClose (event){
+    if(event.target.id === 'overlay'){
+      toggleModal(false);
+    }
+  }
+
   return (
-     <div className="modal-overlay" onClick={()=> toggleModal(false)}>
+     <div className="modal-overlay" id="overlay" onClick={handleClose}>
         <div className='modal-container'>
           <div className='modal-content'>
             <form onSubmit={handleSubmit} action="submit">
             <div>
-              <label> Type your question here:
+              <label className="add-question-label"> Type your question here:
                 <textarea name='question' type="text" />
               </label>
             </div>
               <div className='answer-inputs'>
               <div>
-                <label> Answer A:
+                <label className="answer-a"> Answer A:
                   <input name='answerA' type="text" />
                 </label> 
               </div>
               <div>
-                <label> Answer B:
+                <label className="answer-b"> Answer B:
                   <input name='answerB' type="text" />
                 </label>
               </div>
               <div>
-                <label> Answer C:
+                <label className="answer-c"> Answer C:
                   <input name='answerC' type="text" />
                 </label>
               </div>
               <div>
-                <label> Answer D:
+                <label className="answer-d"> Answer D:
                   <input name='answerD' type="text" />
                 </label>
               </div>
