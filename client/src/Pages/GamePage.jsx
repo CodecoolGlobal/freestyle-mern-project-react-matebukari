@@ -56,7 +56,7 @@ export default function GamePage() {
       <nav className="nav-bar">
       <button onClick={handleAddQuestion}>Add question</button>
       <div>{userData.name}
-      <img src="./public/d*ckpic.jpg" alt="d*ckpic" /></div>
+      <img src="./d*ckpic.jpg" alt="d*ckpic" /></div>
       </nav>
     {!gameStart && <>
       <button onClick={handleGameStart}>Start</button>
@@ -74,8 +74,8 @@ export default function GamePage() {
         onLosing={setIsLost}
         maxQuestions={questions.length}
         correctAnswer={questions[progress].correctAnswer}/>}
-      <button onClick={() => setProgress((prev) => prev - 1)}>Prev</button>
-      <button onClick={() => setProgress((prev) => prev + 1)}>Next</button>
+      {/* <button onClick={() => setProgress((prev) => prev - 1)}>Prev</button>
+      <button onClick={() => setProgress((prev) => prev + 1)}>Next</button> */}
       {isWon && <WinModal onReset={onReset} score={score}/>}
       {isLost && <LosingModal onReset={onReset}/>}
 
