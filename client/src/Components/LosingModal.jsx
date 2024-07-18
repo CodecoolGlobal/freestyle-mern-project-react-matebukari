@@ -1,4 +1,4 @@
-import "../Pages/winModal.css"
+import "../Pages/loseModal.css"
 
 export default function LosingModal({onReset}) {
   return (
