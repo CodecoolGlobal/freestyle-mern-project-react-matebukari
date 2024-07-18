@@ -25,7 +25,7 @@ export default function GamePage() {
     }
   } 
 
-  useEffect((score)=> {
+  useEffect(()=> {
     handleSaveScore()
 
   }, [isWon, isLost])
@@ -65,7 +65,7 @@ export default function GamePage() {
     </>}
     {gameStart && 
     <>
-      {questions && <ProgressList maxQuestions={questions.length} prices={prices} onPriceSet={setPrices}/>}
+      {questions && <ProgressList maxQuestions={questions.length} prices={prices} onPriceSet={setPrices} progress={progress}/>}
       {questions && <GameQuestion questions={questions} progress={progress}/>}
       {questions && <Answers 
         answers={questions[progress].answers} 

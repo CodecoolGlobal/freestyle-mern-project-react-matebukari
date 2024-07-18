@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default function ProgressList ({ maxQuestions, prices, onPriceSet}) {
+export default function ProgressList ({ maxQuestions, prices, onPriceSet, progress}) {
 
   useEffect(() => {
     let prevPrices = [0, 15000];
@@ -30,7 +30,7 @@ export default function ProgressList ({ maxQuestions, prices, onPriceSet}) {
     <div className="progress-container">
       <div className="progress-content">
         {prices.map((value, i) => (
-          <div className="progress-line" key={`progress-${i}`}>
+          <div className="progress-line" style={{background: progress === i ? 'white' : 'none'}}key={`progress-${i}`}>
             <div className="level"> {i + 1} </div>
             <div className="price"> {value} </div>
           </div>
