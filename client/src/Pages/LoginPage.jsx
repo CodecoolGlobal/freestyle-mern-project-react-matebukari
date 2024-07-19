@@ -7,7 +7,7 @@ import "./styles/loginPage.css";
 export default function LoginPage() {
   const [userName, setUserName] = useState("");
   const [userPassword, setUserPassword] = useState("");
-  const [validLogin, setValidLogin] = useState(false);
+  const [validLogin, setValidLogin] = useState(null);
 
   const navigate = useNavigate();
 
@@ -34,6 +34,13 @@ export default function LoginPage() {
 
   return (
     <div className="login-container">
+            {validLogin ? (
+        <h1>Succesfull Login!!!</h1>
+      ) : validLogin !== null ? (
+        <h1>Unsuccselfull Login!!!</h1>
+      ) : (
+        <></>
+      )}
       <UserNameInput onNameInput={setUserName} /> <br />
       <UserPasswordInput onPasswordInput={setUserPassword} /> <br />
       <button className="login-button" onClick={handleLoginClick}>Login</button>

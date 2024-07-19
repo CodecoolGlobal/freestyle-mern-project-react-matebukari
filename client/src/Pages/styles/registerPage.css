@@ -32,6 +32,10 @@
   font-weight: bold;
 }
 
+.register-container h1 {
+  color: black;
+}
+
 .user-password-input{
   font-size: 20px;
   border-radius: 10px;

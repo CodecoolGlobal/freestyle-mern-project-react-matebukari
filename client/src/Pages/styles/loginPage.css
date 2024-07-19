@@ -11,6 +11,7 @@
   border-radius: 10px;
 }
 
+
 .user-name-label{
   color: black;
   font-size: 25px;
@@ -30,6 +31,10 @@
   color: black;
   font-size: 25px;
   font-weight: bold;
+}
+
+.login-container h1 {
+  color: black;
 }
 
 .user-password-input{

@@ -8,6 +8,14 @@
   overflow: auto; /* Enable scroll if needed */
 }
 
+.game-root {
+  background-image: url('https://player.hu/uploads/2023/04/52840216_10157131521022328_3731885839270019072_n-1024x683.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 100vw;
+  height: 100vh;
+}
+
 .progress-content {
   font-size: 2rem;
   font-weight: bold;
