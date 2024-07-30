@@ -148,13 +148,13 @@ export default function Supports({
           text: "Votes",
           color: "white",
           font: {
-            size: 22, // Change the font size of the y-axis title
+            size: 12, // Change the font size of the y-axis title
           },
         },
         ticks: {
           color: "white",
           font: {
-            size: 22, // Change the font size of the y-axis labels
+            size: 12, // Change the font size of the y-axis labels
           },
         },
         grid: {
@@ -167,13 +167,13 @@ export default function Supports({
           text: "Answers",
           color: "white",
           font: {
-            size: 22, // Change the font size of the x-axis title
+            size: 20, // Change the font size of the x-axis title
           },
         },
         ticks: {
           color: "white",
           font: {
-            size: 22, // Change the font size of the x-axis labels
+            size: 20, // Change the font size of the x-axis labels
           },
         },
         grid: {
