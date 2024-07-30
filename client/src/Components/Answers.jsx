@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Supports from "./Supports";
 
-export default function Answers ({answers, progress, correctAnswer, onProgress, onWinning, onLosing, maxQuestions}){
+export default function Answers ({answers, progress, correctAnswer, onProgress, onWinning, onLosing, maxQuestions, difficulty}){
   console.log(answers);
   const [hiddenAnswers, setHiddenAnswers] = useState([]);
 
@@ -23,7 +23,7 @@ export default function Answers ({answers, progress, correctAnswer, onProgress, 
 
   return (
     <>
-      <Supports correctAnswer={correctAnswer} onFiftyFifty={setHiddenAnswers} progress={progress} />
+      <Supports correctAnswer={correctAnswer} onFiftyFifty={setHiddenAnswers} progress={progress} difficulty={difficulty}/>
       <div className="answers-container">
         <div className="answers-content">
           <div className={hiddenAnswers.includes('A') ? "answer-hide" : "answerA"} onClick={handleAnswer}><div className="letter">A: </div> <div id='A'>{answers.answerA}</div></div>
