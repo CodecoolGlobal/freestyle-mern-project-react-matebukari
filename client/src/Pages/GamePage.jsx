@@ -8,6 +8,7 @@ import LosingModal from "../Components/LosingModal";
 import ProgressList from "../Components/ProgressList";
 import "./styles/gamePage.css";
 import LeaderBoardModal from "../Components/LeaderBoardModal";
+import AllQuestionsModal from "../Components/AllQusetionsModal";
 
 const updateUser = (user) => {
   return fetch(`/api/user/${user._id}`, {
@@ -31,6 +32,8 @@ export default function GamePage() {
   const [score, setScore] = useState(0)
   const [prices, setPrices] = useState([]);
   const [showLeaderBoard, setShowLeaderBoard] = useState(false);
+  const [showAllquestion, setshowAllquestion] = useState(false);
+
 
   function handleSaveScore(){
     if ((progress + 1) % 3 === 0){
@@ -80,16 +83,22 @@ export default function GamePage() {
     setShowLeaderBoard(true);
   }
 
+  function handleShowQuestions () {
+    setshowAllquestion(true);
+  }
+
   return (
     <div className="game-root">
       <nav className="nav-bar">
       <button onClick={handleAddQuestion}>Add questions</button>
       <button onClick={handleShowLeaderBoard}>Leader Booard</button>
+      <button onClick={handleShowQuestions}>All questions</button>
       <div>{userData.name}
       {/* <img src="./d*ckpic.jpg" alt="d*ckpic" /> */}
       </div>
       </nav>
     {showLeaderBoard && <LeaderBoardModal toggleModal={setShowLeaderBoard}/>}
+    {showAllquestion && <AllQuestionsModal toggleModal={setshowAllquestion}/>}
     {!gameStart && <>
       <div className="startBtn-container">
         <div className="startBtn-center">
