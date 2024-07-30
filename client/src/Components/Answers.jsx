@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Supports from "./Supports";
+import Supports from "./Supports/Supports";
 
 export default function Answers ({answers, progress, correctAnswer, onProgress, onWinning, onLosing, maxQuestions, difficulty}){
   console.log(answers);

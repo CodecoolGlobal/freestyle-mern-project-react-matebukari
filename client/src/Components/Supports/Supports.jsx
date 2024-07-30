@@ -212,14 +212,14 @@ export default function Supports({
             onClick={handleAudience}
             disabled={usedSupports.includes("audience")}
           >
-            audience
+            <img className="support-img" src=".\src\Components\Supports\assets\audience.png"></img>
           </button>
           <button
             className="joker"
             onClick={handleJoker}
             disabled={usedSupports.includes("joker")}
           >
-            joker
+            <img className="support-img" src=".\src\Components\Supports\assets\joker.png"></img>
           </button>
         </div>
       </div>
