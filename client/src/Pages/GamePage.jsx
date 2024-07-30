@@ -7,6 +7,17 @@ import WinModal from "../Components/WinModal";
 import LosingModal from "../Components/LosingModal";
 import ProgressList from "../Components/ProgressList";
 import "./styles/gamePage.css";
+import LeaderBoardModal from "../Components/LeaderBoardModal";
+
+const updateUser = (user) => {
+  return fetch(`/api/user/${user._id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(user),
+  }).then((res) => res.json());
+};
 
 export default function GamePage() {
   const location = useLocation();
@@ -19,6 +30,7 @@ export default function GamePage() {
   const [isLost, setIsLost] = useState(false)
   const [score, setScore] = useState(0)
   const [prices, setPrices] = useState([]);
+  const [showLeaderBoard, setShowLeaderBoard] = useState(false);
 
   function handleSaveScore(){
     if ((progress + 1) % 3 === 0){
@@ -32,13 +44,25 @@ export default function GamePage() {
   }, [isWon, isLost])
 
 
-  function onReset(){
-    setGameStart(false)
-    setIsLost(false)
-    setProgress(0)
-    setIsWon(false)
+  function onLoseReset(){
+    setGameStart(false);
+    setIsLost(false);
+    setProgress(0);
+    setIsWon(false);
   }
 
+  const newUser = {
+    ...userData,
+    score
+  }
+
+  function onWinReset () {
+    setGameStart(false);
+    setIsLost(false);
+    setProgress(0);
+    setIsWon(false);
+    updateUser(newUser);
+  }
 
   async function handleGameStart() {
     const response = await fetch('/api/questions-ingame');
@@ -52,15 +76,20 @@ export default function GamePage() {
     setShowQuestionModal(true);
   }
 
+  function handleShowLeaderBoard () {
+    setShowLeaderBoard(true);
+  }
 
   return (
     <div className="game-root">
       <nav className="nav-bar">
       <button onClick={handleAddQuestion}>Add questions</button>
+      <button onClick={handleShowLeaderBoard}>Leader Booard</button>
       <div>{userData.name}
       {/* <img src="./d*ckpic.jpg" alt="d*ckpic" /> */}
       </div>
       </nav>
+    {showLeaderBoard && <LeaderBoardModal toggleModal={setShowLeaderBoard}/>}
     {!gameStart && <>
       <div className="startBtn-container">
         <div className="startBtn-center">
@@ -68,6 +97,7 @@ export default function GamePage() {
         </div>
       </div>
       {showQuestionModal && <AddQuestionModal user={userData} toggleModal={setShowQuestionModal}/>}
+      
     </>}
     {gameStart && 
     <>
@@ -83,8 +113,8 @@ export default function GamePage() {
         correctAnswer={questions[progress].correctAnswer}/>}
       {/* <button onClick={() => setProgress((prev) => prev - 1)}>Prev</button>
       <button onClick={() => setProgress((prev) => prev + 1)}>Next</button> */}
-      {isWon && <WinModal onReset={onReset} score={score}/>}
-      {isLost && <LosingModal onReset={onReset}/>}
+      {isWon && <WinModal onReset={onWinReset} score={score}/>}
+      {isLost && <LosingModal onReset={onLoseReset}/>}
 
     </>
     }
