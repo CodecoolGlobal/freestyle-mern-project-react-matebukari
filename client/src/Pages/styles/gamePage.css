@@ -16,6 +16,20 @@
   height: 100vh;
 }
 
+.supports-container {
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top */
+  left: 15%;
+  top: 22.5%;
+  width: auto;
+  height: auto;
+}
+
+.supports-content button{
+  font-size: 2rem;
+  margin-left: 4rem;
+}
+
 .progress-content {
   font-size: 2rem;
   font-weight: bold;
@@ -117,24 +131,47 @@
   text-shadow: 1px 1px 1px white;
 }
 
+
+.answer-hide{
+  visibility: hidden;
+  display: grid;
+  grid-template-areas: "a b";
+  align-items: start;
+  justify-items: start;
+  justify-content: start;
+}
+
 .answerA{
-  display: flex;
-  flex-flow: row;
+  visibility: visible;
+  display: grid;
+  grid-template-areas: "a b";
+  align-items: start;
+  justify-items: start;
+  justify-content: start;
 }
 
 .answerB{
-  display: flex;
-  flex-flow: row;
+  display: grid;
+  grid-template-areas: "a b";
+  align-items: start;
+  justify-items: start;
+  justify-content: start;
 }
 
 .answerC{
-  display: flex;
-  flex-flow: row;
+  display: grid;
+  grid-template-areas: "a b";
+  align-items: start;
+  justify-items: start;
+  justify-content: start;
 }
 
 .answerD{
-  display: flex;
-  flex-flow: row;
+  display: grid;
+  grid-template-areas: "a b";
+  align-items: start;
+  justify-items: start;
+  justify-content: start;
 }
 
 #A:hover, #B:hover, #C:hover, #D:hover {
