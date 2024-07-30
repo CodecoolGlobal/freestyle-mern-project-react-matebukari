@@ -2,8 +2,14 @@ import { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import "chart.js/auto";
 
-export default function Supports({ correctAnswer, onFiftyFifty, progress, difficulty }) {
+export default function Supports({
+  correctAnswer,
+  onFiftyFifty,
+  progress,
+  difficulty,
+}) {
   const [usedSupports, setUsedSupports] = useState([]);
+  const [remainingAnswers, setRemainingAnswers] = useState([]);
   const [audienceAnswers, setAudienceAnswers] = useState({
     A: 0,
     B: 0,
@@ -11,10 +17,14 @@ export default function Supports({ correctAnswer, onFiftyFifty, progress, diffic
     D: 0,
     answersCount: 0,
   });
+  const [showVotes, setShowVotes] = useState(false);
+  const [showJoker, setShowJoker] = useState(false);
 
   useEffect(() => {
     onFiftyFifty([]);
     setAudienceAnswers({ A: 0, B: 0, C: 0, D: 0, answersCount: 0 });
+    setShowVotes(false);
+    setShowJoker(false);
   }, [progress]);
 
   useEffect(() => {
@@ -22,10 +32,14 @@ export default function Supports({ correctAnswer, onFiftyFifty, progress, diffic
       if (audienceAnswers.answersCount !== 0) {
         const answers = ["A", "B", "C", "D"];
         const maxAudience = 50;
+        let randomIndex = Math.floor(Math.random() * 4);
+        let randomAnswer = answers[randomIndex];
+        if (remainingAnswers.length !== 0) {
+          randomIndex = Math.floor(Math.random() * 2);
+          randomAnswer = remainingAnswers[randomIndex];
+          console.log(remainingAnswers);
+        }
         if (audienceAnswers.answersCount < maxAudience) {
-          const randomIndex = Math.floor(Math.random() * 4);
-          const randomAnswer = answers[randomIndex];
-  
           setAudienceAnswers((prev) => {
             return {
               ...prev,
@@ -33,37 +47,48 @@ export default function Supports({ correctAnswer, onFiftyFifty, progress, diffic
               answersCount: prev.answersCount + 1,
             };
           });
-          if(audienceAnswers.answersCount % (5 * difficulty) === 0) {
+          if (audienceAnswers.answersCount % (5 * difficulty) === 0) {
+            console.log(correctAnswer);
             setAudienceAnswers((prev) => {
               return {
                 ...prev,
-                [correctAnswer]: prev[correctAnswer] + 1,
+                [correctAnswer]: prev[correctAnswer] + 2,
               };
             });
-            console.log('hello');
+            console.log("hello");
           }
           console.log(audienceAnswers);
         }
       }
     }, 100);
-    
   }, [audienceAnswers.answersCount]);
 
   function handleFiftyFity() {
+    const hiddenAnswers = [];
     const remainingAnswers = [];
-    console.log(remainingAnswers);
+    console.log(hiddenAnswers);
     const answers = ["A", "B", "C", "D"];
+    while (hiddenAnswers.length < 2) {
+      const randomAnswerIndex = Math.floor(Math.random() * 4);
+      if (
+        !hiddenAnswers.includes(answers[randomAnswerIndex]) &&
+        answers[randomAnswerIndex] !== correctAnswer
+      ) {
+        hiddenAnswers.push(answers[randomAnswerIndex]);
+      }
+    }
     while (remainingAnswers.length < 2) {
       const randomAnswerIndex = Math.floor(Math.random() * 4);
       if (
         !remainingAnswers.includes(answers[randomAnswerIndex]) &&
-        answers[randomAnswerIndex] !== correctAnswer
+        !hiddenAnswers.includes(answers[randomAnswerIndex])
       ) {
         remainingAnswers.push(answers[randomAnswerIndex]);
       }
     }
     setUsedSupports([...usedSupports, "fiftyFifty"]);
-    onFiftyFifty(remainingAnswers);
+    setRemainingAnswers(remainingAnswers);
+    onFiftyFifty(hiddenAnswers);
   }
 
   function handleAudience() {
@@ -71,19 +96,21 @@ export default function Supports({ correctAnswer, onFiftyFifty, progress, diffic
       ...prev,
       answersCount: prev.answersCount + 1,
     }));
-    //setUsedSupports([...usedSupports, "audience"]);
+    setUsedSupports([...usedSupports, "audience"]);
+    setShowVotes(true);
     console.log(audienceAnswers);
   }
 
-  function handlePhone() {
-    setUsedSupports([...usedSupports, "phone"]);
+  function handleJoker() {
+    setShowJoker(true);
+    setUsedSupports([...usedSupports, "joker"]);
   }
 
   const graphData = {
     labels: ["A", "B", "C", "D"],
     datasets: [
       {
-        label: "Number of Audience Votes",
+        label: "Audience Votes",
         data: [
           audienceAnswers.A,
           audienceAnswers.B,
@@ -108,30 +135,69 @@ export default function Supports({ correctAnswer, onFiftyFifty, progress, diffic
   };
 
   const graphOptions = {
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
     scales: {
       y: {
         beginAtZero: true,
         title: {
           display: true,
           text: "Votes",
+          color: "white",
+          font: {
+            size: 22, // Change the font size of the y-axis title
+          },
+        },
+        ticks: {
+          color: "white",
+          font: {
+            size: 22, // Change the font size of the y-axis labels
+          },
+        },
+        grid: {
+          color: "rgba(255, 255, 255, 0.2)", // Optional: light white grid lines
         },
       },
       x: {
         title: {
           display: true,
           text: "Answers",
+          color: "white",
+          font: {
+            size: 22, // Change the font size of the x-axis title
+          },
+        },
+        ticks: {
+          color: "white",
+          font: {
+            size: 22, // Change the font size of the x-axis labels
+          },
+        },
+        grid: {
+          color: "rgba(255, 255, 255, 0.2)", // Optional: light white grid lines
         },
       },
     },
   };
-
   return (
     <>
-        <div className="supports-graph"
-          style={{ height: "220px", width: "450px", backgroundColor: "white" }}
-        >
+      {showVotes && (
+        <div className="supports-graph">
           <Bar data={graphData} options={graphOptions} />
         </div>
+      )}
+      {showJoker && (
+        <div className="supports-joker-container">
+          <div className="card">
+            <div className="text top">JOKER</div>
+            <div className="supports-joker-content">{correctAnswer}</div>
+            <div className="text bottom">JOKER</div>
+          </div>
+        </div>
+      )}
       <div className="supports-container">
         <div className="supports-content">
           <button
@@ -149,11 +215,11 @@ export default function Supports({ correctAnswer, onFiftyFifty, progress, diffic
             audience
           </button>
           <button
-            className="phone"
-            onClick={handlePhone}
-            disabled={usedSupports.includes("phone")}
+            className="joker"
+            onClick={handleJoker}
+            disabled={usedSupports.includes("joker")}
           >
-            Phone
+            joker
           </button>
         </div>
       </div>

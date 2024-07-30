@@ -141,6 +141,73 @@
   justify-content: start;
 }
 
+.card {
+  position: relative;
+  height: 150px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text {
+  position: absolute;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 0.8rem;
+  color: white;
+  font-weight: bold;
+}
+
+.top {
+  top: 15px;
+  left: 5px;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.bottom {
+  bottom: 15px;
+  right: 5px;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+}
+
+.supports-joker-container {
+  box-shadow: 0 0 10px rgb(73, 149, 255), 0 0 20px rgb(17, 0, 205); /* Blue glow effect */
+  border-radius: 20px;
+  padding: 10px;
+  display: flex;
+  position: fixed; /* Stay in place */
+  z-index: 1001; /* Sit on top */
+  right: 35%;
+  top: 8.5%;
+  height: 150px;
+  width: 100px;
+  background-color: rgb(0, 0, 0);
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.supports-joker-content {
+  font-size: 4rem;
+  
+}
+
+.supports-graph {
+  box-shadow: 0 0 10px rgb(73, 149, 255), 0 0 20px rgb(17, 0, 205); /* Blue glow effect */
+  padding: 10px;
+  display: flex;
+  position: fixed; /* Stay in place */
+  z-index: 1001; /* Sit on top */
+  right: 3%;
+  bottom: 15%;
+  height: 225px;
+  width: 450px;
+  background-color: rgb(0, 0, 0);
+}
+
 .answerA{
   visibility: visible;
   display: grid;
