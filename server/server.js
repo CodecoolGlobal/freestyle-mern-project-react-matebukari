@@ -135,6 +135,9 @@ app.get('/api/questions-by-id/:id', async (req, res) => {
   res.json(await Question.find({user: new mongoose.Types.ObjectId(req.params.id)}).populate('user')); 
 });
 
+
+
+
 app.post('/api/question', async (req, res) => {
   const question = req.body;
   try {
