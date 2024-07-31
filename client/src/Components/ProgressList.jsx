@@ -23,7 +23,6 @@ export default function ProgressList ({ maxQuestions, prices, onPriceSet, progre
 
       newPrices.push(currentPrice);
     }
-    console.log(newPrices)
     onPriceSet(newPrices);
   }, []);
 

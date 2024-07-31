@@ -9,6 +9,7 @@ import "./styles/gamePage.css";
 import UserDropDown from "../Components/UserDropDown/UserDropDown";
 import LeaderBoardModal from "../Components/LeaderBoardModal";
 import AllQuestionsModal from "../Components/AllQusetionsModal";
+import CheckpointModal from "../Components/CheckpointModal";
 
 const updateUser = (user) => {
   return fetch(`/api/user/${user._id}`, {
@@ -21,32 +22,32 @@ const updateUser = (user) => {
 };
 
 export default function GamePage() {
-  const userJSON = localStorage.getItem("user")
+  const userJSON = localStorage.getItem("user");
   const userData = JSON.parse(userJSON);
-  console.log(userData)
   const [gameStart, setGameStart] = useState(false);
-  const [showQuestionModal, setShowQuestionModal] = useState(false)
+  const [showQuestionModal, setShowQuestionModal] = useState(false);
   const [questions, setQuestions] = useState(null);
   const [progress, setProgress] = useState(0);
-  const [isWon, setIsWon] = useState(false)
-  const [isLost, setIsLost] = useState(false)
-  const [score, setScore] = useState(0)
+  const [isWon, setIsWon] = useState(false);
+  const [isLost, setIsLost] = useState(false);
+  const [score, setScore] = useState(0);
   const [prices, setPrices] = useState([]);
-  const [openDropDown, setOpenDropDown] = useState(false)
-  const [showLeaderBoard, setShowLeaderBoard] = useState(false)
-  const [showAllQuestion, setShowAllQuestion] = useState(false)
-
-  function handleSaveScore(){
-    if ((progress + 1) % 3 === 0){
-      setScore(prices[progress])
-    }
-  } 
+  const [openDropDown, setOpenDropDown] = useState(false);
+  const [showLeaderBoard, setShowLeaderBoard] = useState(false);
+  const [showAllQuestion, setShowAllQuestion] = useState(false);
+  const [showCheckpoint, setShowCheckpoint] = useState(false);
 
   useEffect(()=> {
-    handleSaveScore()
+    if (questions !== null){
+      if((progress + 1) % (questions.length / 3) === 0 ) {
+        setScore(prices[progress])
+      }
+      if ((progress === 0 ? 1 : progress) % (questions.length / 3) === 0) {
+        setShowCheckpoint(true);
+      }
+    }
 
-  }, [isWon, isLost])
-
+  }, [ progress])
 
   function onLoseReset(){
     setGameStart(false);
@@ -129,7 +130,7 @@ export default function GamePage() {
       <button onClick={() => setProgress((prev) => prev + 1)}>Next</button> */}
       {isWon && <WinModal onReset={onWinReset} score={score}/>}
       {isLost && <LosingModal onReset={onLoseReset}/>}
-
+      {showCheckpoint && ((progress === 0 ? 1 : progress) % (questions.length / 3) === 0) && <CheckpointModal onClose={setShowCheckpoint} score={score} onQuit={onWinReset}/>}
     </>
     }
     </div>
