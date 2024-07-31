@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgb(145, 138, 138);
+  background-color: rgba(145, 138, 138, 0.8); /* Adding some transparency to the overlay */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,32 +12,28 @@
 }
 
 .modal-container {
-  background: rgb(0, 0, 0);
+  background: black; /* Changed to white for better readability */
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   width: 400px;
+  max-height: 80vh; /* Added max-height to control modal size */
+  overflow: auto;
+  /* Ensures that the container can scroll */
   text-align: left;
 }
 
-.modal-content input {
+.modal-content {
   margin: 0;
   padding: 10px 0;
   color: black;
-}
-
-.modal-content button {
   margin-top: 20px;
   padding: 10px 20px;
-  background-color: rgb(0, 174, 255);
+  background-color: #545454;
   color: white;
   border: none;
   font-weight: bold;
   font-size: 1rem;
   border-radius: 5px;
   cursor: pointer;
-}
-
-.modal-content button:hover {
-  background-color: #0056b3;
 }
