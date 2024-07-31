@@ -9,16 +9,18 @@ import "./styles/gamePage.css";
 import UserDropDown from "../Components/UserDropDown/UserDropDown";
 import LeaderBoardModal from "../Components/LeaderBoardModal";
 import AllQuestionsModal from "../Components/AllQusetionsModal";
+import LogOutModal from "../Components/LogOutModal/LogOutModal.jsx";
 import CheckpointModal from "../Components/CheckpointModal";
 
-const updateUser = (user) => {
-  return fetch(`/api/user/${user._id}`, {
+const updateUser = async (user) => {
+  const res = await fetch(`/api/user/${user._id}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(user),
-  }).then((res) => res.json());
+  });
+  return await res.json();
 };
 
 export default function GamePage() {
@@ -32,10 +34,16 @@ export default function GamePage() {
   const [isLost, setIsLost] = useState(false);
   const [score, setScore] = useState(0);
   const [prices, setPrices] = useState([]);
-  const [openDropDown, setOpenDropDown] = useState(false);
-  const [showLeaderBoard, setShowLeaderBoard] = useState(false);
-  const [showAllQuestion, setShowAllQuestion] = useState(false);
+  const [openDropDown, setOpenDropDown] = useState(false)
+  const [showLeaderBoard, setShowLeaderBoard] = useState(false)
+  const [showAllQuestion, setShowAllQuestion] = useState(false)
   const [showCheckpoint, setShowCheckpoint] = useState(false);
+  const [showValidLogout, setShowValidLogout] = useState(false)
+
+  function handleSaveScore(){
+     setScore(prices[progress])
+  } 
+
 
   useEffect(()=> {
     if (questions !== null){
@@ -89,19 +97,24 @@ export default function GamePage() {
     setShowAllQuestion(true);
   }
 
+  function handleLogOut () {
+    setShowValidLogout(true);
+  }
+
   return (
     <div className="game-root">
       <nav className="nav-bar">
         {/* onMyQuestion={} onAllQuestion={} */}
-        {openDropDown && (<UserDropDown onAddQuestion={handleAddQuestion} onShowQuestions={handleShowQuestions} onShowLeaderBoard={handleShowLeaderBoard}/>)}
-          {/* <img src="./d*ckpic.jpg" alt="d*ckpic" /> */}
-      {/* <button onClick={handleAddQuestion}>Add questions</button>
-      <button onClick={handleShowLeaderBoard}>Leader Booard</button>
-      <button onClick={handleShowQuestions}>All questions</button> */}
-      <div onClick={() => setOpenDropDown((prev) => !prev)}>{userData.name}
-      {/* <img src="./d*ckpic.jpg" alt="d*ckpic" /> */}
-      </div>
+        {/* <img src="./d*ckpic.jpg" alt="d*ckpic" /> */}
+        {openDropDown && (
+        <UserDropDown 
+          onAddQuestion={handleAddQuestion} 
+          onShowQuestions={handleShowQuestions} 
+          onShowLeaderBoard={handleShowLeaderBoard} 
+          onLogOut={handleLogOut}/>)}
+      <div onClick={() => setOpenDropDown((prev) => !prev)}>{userData.name}</div>
       </nav>
+    {showValidLogout && <LogOutModal toggleModal={setShowValidLogout}/>}
     {showLeaderBoard && <LeaderBoardModal toggleModal={setShowLeaderBoard}/>}
     {showAllQuestion && <AllQuestionsModal toggleModal={setShowAllQuestion}/>}
     {!gameStart && <>
