@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
 import AddQuestionModal from "../Components/AddQuestionModal";
 import GameQuestion from "../Components/GameQuestion";
 import Answers from "../Components/Answers";
@@ -7,10 +6,12 @@ import WinModal from "../Components/WinModal";
 import LosingModal from "../Components/LosingModal";
 import ProgressList from "../Components/ProgressList";
 import "./styles/gamePage.css";
+import UserDropDown from "../Components/UserDropDown/UserDropDown";
 
 export default function GamePage() {
-  const location = useLocation();
-  const userData = location.state;
+  const userJSON = localStorage.getItem("user")
+  const userData = JSON.parse(userJSON);
+  console.log(userData)
   const [gameStart, setGameStart] = useState(false);
   const [showQuestionModal, setShowQuestionModal] = useState(false)
   const [questions, setQuestions] = useState(null);
@@ -19,6 +20,7 @@ export default function GamePage() {
   const [isLost, setIsLost] = useState(false)
   const [score, setScore] = useState(0)
   const [prices, setPrices] = useState([]);
+  const [openDropDown, setOpenDropDown] = useState(false)
 
   function handleSaveScore(){
     if ((progress + 1) % 3 === 0){
@@ -56,10 +58,11 @@ export default function GamePage() {
   return (
     <div className="game-root">
       <nav className="nav-bar">
-      <button onClick={handleAddQuestion}>Add questions</button>
-      <div>{userData.name}
-      {/* <img src="./d*ckpic.jpg" alt="d*ckpic" /> */}
-      </div>
+        {/* onMyQuestion={} onAllQuestion={} */}
+        {openDropDown && (<UserDropDown onAddQuestion={handleAddQuestion}/>)}
+        <span onClick={() => setOpenDropDown((prev) => !prev)}>{userData.name}
+          {/* <img src="./d*ckpic.jpg" alt="d*ckpic" /> */}
+        </span>
       </nav>
     {!gameStart && <>
       <div className="startBtn-container">

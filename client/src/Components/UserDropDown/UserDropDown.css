@@ -1,0 +1,44 @@
+.user-dropdown{
+  position: absolute;
+  top: 4.5rem;
+  right: 4rem;
+  width: 500px;
+  padding: 15px;
+  border-radius: 15px;
+  background-color: white;
+  border: 1px solid gray;
+}
+
+
+.user-dropdown button{
+  float: left;
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px white;
+  background-color: rgb(0, 174, 255);
+  letter-spacing: 0.1rem;
+  border-radius: 0.8rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+  border: none;
+  cursor: pointer;
+}
+ul {
+  list-style-type: none;
+}
+
+.user-dropdown::before{
+  position: absolute;
+  content: '';
+  top: -1rem;
+  right: 2rem;
+  width: 25px;
+  height: 25px;
+  transform: rotate(45deg);
+  background-color: white;
+  border-left: 1px solid gray;
+  border-top: 1px solid gray;
+
+}
