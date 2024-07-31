@@ -19,7 +19,6 @@
   width: 400px;
   max-height: 80vh; /* Added max-height to control modal size */
   overflow: auto;
-  /* Ensures that the container can scroll */
   text-align: left;
 }
 
