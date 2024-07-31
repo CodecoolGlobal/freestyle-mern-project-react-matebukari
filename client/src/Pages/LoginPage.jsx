@@ -13,32 +13,32 @@ export default function LoginPage() {
 
   async function handleLoginClick() {
     try {
-      const ressposne = await fetch("/api/user/login", {
+      const response = await fetch("/api/user/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userName, userPassword }),
       });
-      const result = await ressposne.json();
+      const result = await response.json();
       setValidLogin(result.success);
       console.log(result.user);
       if (result.success) {
+        localStorage.setItem("user", JSON.stringify(result.user));
         console.log('anyu');
-        navigate('/game',{
-          state: result.user
-        })
+        navigate('/game')
       }
     } catch (error) {
       console.error(`szar minden is!! :,( ${error}`);
     }
   }
 
+
   return (
     <div className="login-container">
             {validLogin ? (
-        <h1>Succesfull Login!!!</h1>
+        <h1>Successfull Login!!!</h1>
       ) : validLogin !== null ? (
-        <h1>Unsuccselfull Login!!!</h1>
-      ) : (
+        <h1>Unsuccessfull Login!!!</h1>
+      ) : ( //loggedOut ? (<h1>Logged out successfully!!</h1>) :
         <></>
       )}
       <UserNameInput onNameInput={setUserName} /> <br />

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
 import AddQuestionModal from "../Components/AddQuestionModal";
 import GameQuestion from "../Components/GameQuestion";
 import Answers from "../Components/Answers";
@@ -7,6 +6,7 @@ import WinModal from "../Components/WinModal";
 import LosingModal from "../Components/LosingModal";
 import ProgressList from "../Components/ProgressList";
 import "./styles/gamePage.css";
+import UserDropDown from "../Components/UserDropDown/UserDropDown";
 import LeaderBoardModal from "../Components/LeaderBoardModal";
 import AllQuestionsModal from "../Components/AllQusetionsModal";
 
@@ -21,8 +21,9 @@ const updateUser = (user) => {
 };
 
 export default function GamePage() {
-  const location = useLocation();
-  const userData = location.state;
+  const userJSON = localStorage.getItem("user")
+  const userData = JSON.parse(userJSON);
+  console.log(userData)
   const [gameStart, setGameStart] = useState(false);
   const [showQuestionModal, setShowQuestionModal] = useState(false)
   const [questions, setQuestions] = useState(null);
@@ -31,9 +32,9 @@ export default function GamePage() {
   const [isLost, setIsLost] = useState(false)
   const [score, setScore] = useState(0)
   const [prices, setPrices] = useState([]);
-  const [showLeaderBoard, setShowLeaderBoard] = useState(false);
-  const [showAllquestion, setshowAllquestion] = useState(false);
-
+  const [openDropDown, setOpenDropDown] = useState(false)
+  const [showLeaderBoard, setShowLeaderBoard] = useState(false)
+  const [showAllQuestion, setShowAllQuestion] = useState(false)
 
   function handleSaveScore(){
     if ((progress + 1) % 3 === 0){
@@ -56,7 +57,7 @@ export default function GamePage() {
 
   const newUser = {
     ...userData,
-    score
+    score: (userData.score + score),
   }
 
   function onWinReset () {
@@ -84,21 +85,24 @@ export default function GamePage() {
   }
 
   function handleShowQuestions () {
-    setshowAllquestion(true);
+    setShowAllQuestion(true);
   }
 
   return (
     <div className="game-root">
       <nav className="nav-bar">
-      <button onClick={handleAddQuestion}>Add questions</button>
+        {/* onMyQuestion={} onAllQuestion={} */}
+        {openDropDown && (<UserDropDown onAddQuestion={handleAddQuestion} onShowQuestions={handleShowQuestions} onShowLeaderBoard={handleShowLeaderBoard}/>)}
+          {/* <img src="./d*ckpic.jpg" alt="d*ckpic" /> */}
+      {/* <button onClick={handleAddQuestion}>Add questions</button>
       <button onClick={handleShowLeaderBoard}>Leader Booard</button>
-      <button onClick={handleShowQuestions}>All questions</button>
-      <div>{userData.name}
+      <button onClick={handleShowQuestions}>All questions</button> */}
+      <div onClick={() => setOpenDropDown((prev) => !prev)}>{userData.name}
       {/* <img src="./d*ckpic.jpg" alt="d*ckpic" /> */}
       </div>
       </nav>
     {showLeaderBoard && <LeaderBoardModal toggleModal={setShowLeaderBoard}/>}
-    {showAllquestion && <AllQuestionsModal toggleModal={setshowAllquestion}/>}
+    {showAllQuestion && <AllQuestionsModal toggleModal={setShowAllQuestion}/>}
     {!gameStart && <>
       <div className="startBtn-container">
         <div className="startBtn-center">
