@@ -24,15 +24,19 @@ function handleLogOut(){
           <li>
           <button onClick={onAddQuestion}>Add question</button>
           </li>
+          <br/>
           <li>
           <button >My questions</button>
           </li>
+          <br/>
           <li>
           <button onClick={onShowQuestions} >All questions</button>
           </li>
+          <br/>
           <li>
           <button onClick={onShowLeaderBoard}>Leader Booard</button>
           </li>
+          <br/>
           <li>
           <button onClick={handleLogOut}>Log out</button>
           </li>
