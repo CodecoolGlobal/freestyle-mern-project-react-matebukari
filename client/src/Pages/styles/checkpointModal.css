@@ -1,0 +1,42 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.checkpoint-container {
+  background: rgb(255, 255, 255);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgb(73, 149, 255), 0 0 20px rgb(17, 0, 205); 
+  border: 2px solid #A05FFF;
+  width: 300px;
+  text-align: center;
+  color: black;
+}
+
+.checkpoint-content h1 {
+  margin: 0;
+  padding: 10px 0;
+}
+
+.checkpoint-content button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.checkpoint-content button:hover {
+  background-color: #0056b3;
+}

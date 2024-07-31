@@ -12,7 +12,7 @@ const questionSchema = new Schema({
   },
   correctAnswer: String,
   difficulty: Number,
-  user: [{type: Schema.Types.ObjectId, ref: 'User'}],
+  user: {type: Schema.Types.ObjectId, ref: 'User'},
   createdAt: Date,
   updatedAt: Date,
 });
