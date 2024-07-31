@@ -1,13 +1,15 @@
 .user-dropdown{
+  box-shadow: 0 0 10px rgb(73, 149, 255), 0 0 20px rgb(17, 0, 205);
+  border: 2px solid #A05FFF;
   position: absolute;
   top: 3.5rem;
   right: 1rem;
   width: fit-content;
   padding: 15px;
   border-radius: 15px;
-  background-color: white;
-  border: 1px solid gray;
+  background-color: rgb(0, 0, 0);
   z-index: 5;
+  
 }
 
 .user-dropdown-list{
@@ -20,7 +22,7 @@
   font-size: 0.75rem;
   font-weight: bold;
   text-shadow: 1px 1px 1px rgb(0, 0, 0);
-  background-color: rgb(0, 174, 255);
+  background-color: rgba(73, 149, 255, 0.74);
   letter-spacing: 0.1rem;
   border-radius: 0.8rem;
   padding-left: 3rem;

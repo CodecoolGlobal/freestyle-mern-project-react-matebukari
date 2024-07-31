@@ -179,7 +179,7 @@
   padding: 10px;
   display: flex;
   position: fixed; /* Stay in place */
-  z-index: 1001; /* Sit on top */
+  z-index: 3; /* Sit on top */
   right: 50%;
   top: 8.5%;
   height: 150px;

@@ -132,8 +132,12 @@ app.get('/api/questions-all', async (req, res) => {
 });
 
 app.get('/api/questions-by-id/:id', async (req, res) => {
+  console.log(req.params.id)
   res.json(await Question.find({user: req.params.id}).populate('user')); 
 });
+
+
+
 
 app.post('/api/question', async (req, res) => {
   const question = req.body;
