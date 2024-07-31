@@ -9,8 +9,8 @@ import "./styles/gamePage.css";
 import UserDropDown from "../Components/UserDropDown/UserDropDown";
 import LeaderBoardModal from "../Components/LeaderBoardModal";
 import AllQuestionsModal from "../Components/AllQusetionsModal";
-import LogOutModal from "../Components/LogOutModal/LogOutModal.jsx";
 import CheckpointModal from "../Components/CheckpointModal";
+import LogOutModal from "../Components/LogOutModal/LogOutModal.jsx";
 
 const updateUser = async (user) => {
   const res = await fetch(`/api/user/${user._id}`, {
@@ -34,16 +34,16 @@ export default function GamePage() {
   const [isLost, setIsLost] = useState(false);
   const [score, setScore] = useState(0);
   const [prices, setPrices] = useState([]);
-  const [openDropDown, setOpenDropDown] = useState(false)
-  const [showLeaderBoard, setShowLeaderBoard] = useState(false)
-  const [showAllQuestion, setShowAllQuestion] = useState(false)
+  const [openDropDown, setOpenDropDown] = useState(false);
+  const [showLeaderBoard, setShowLeaderBoard] = useState(false);
+  const [showAllQuestion, setShowAllQuestion] = useState(false);
   const [showCheckpoint, setShowCheckpoint] = useState(false);
   const [showValidLogout, setShowValidLogout] = useState(false)
+
 
   function handleSaveScore(){
      setScore(prices[progress])
   } 
-
 
   useEffect(()=> {
     if (questions !== null){

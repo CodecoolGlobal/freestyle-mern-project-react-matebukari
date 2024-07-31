@@ -19,8 +19,6 @@
 .supports-container {
   position: fixed; /* Stay in place */
   z-index: 3; /* Sit on top */
-  left: 1%;
-  top: 18%;
   right: 32.5%;
   bottom: 10%;
   width: auto;
