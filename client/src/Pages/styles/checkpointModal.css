@@ -12,7 +12,7 @@
 }
 
 .checkpoint-container {
-  background: rgb(255, 255, 255);
+  background-color: rgba(38, 186, 255);
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgb(73, 149, 255), 0 0 20px rgb(17, 0, 205); 
@@ -30,11 +30,15 @@
 .checkpoint-content button {
   margin-top: 20px;
   padding: 10px 20px;
-  background-color: #007bff;
+  box-shadow: 0 0 10px rgb(73, 149, 255), 0 0 20px rgb(17, 0, 205); 
+  border: 2px solid #A05FFF;
+  background-color: black;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .checkpoint-content button:hover {
