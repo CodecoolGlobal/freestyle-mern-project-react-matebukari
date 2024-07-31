@@ -110,13 +110,31 @@ async function createQuestion (questionData) {
   }
 }
 
+app.get('/api/users', async (req, res) => {
+  res.status(200).json(await User.find());
+});
+
+app.patch('/api/user/:id', async (req, res, next) => {
+  try {
+    const user = await User.findOneAndUpdate(
+      { _id: req.params.id },
+      { $set: { ...req.body } },
+      { new: true }
+    );
+    return res.json(user);
+  } catch (err) {
+    return next(err);
+  }
+})
+
 app.get('/api/questions-all', async (req, res) => {
-  res.json(await Question.find().populate('user'))
+  res.json(await Question.find().populate('user'));
 });
 
 app.get('/api/questions-by-id/:id', async (req, res) => {
-  res.json(await Question.find({user: req.params.id}).populate('user'))
+  res.json(await Question.find({user: req.params.id}).populate('user')); 
 });
+
 app.post('/api/question', async (req, res) => {
   const question = req.body;
   try {
