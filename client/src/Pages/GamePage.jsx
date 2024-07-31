@@ -119,7 +119,8 @@ export default function GamePage() {
         onWinning={setIsWon}
         onLosing={setIsLost}
         maxQuestions={questions.length}
-        correctAnswer={questions[progress].correctAnswer}/>}
+        correctAnswer={questions[progress].correctAnswer}
+        difficulty={questions[progress].difficulty}/>}
       {/* <button onClick={() => setProgress((prev) => prev - 1)}>Prev</button>
       <button onClick={() => setProgress((prev) => prev + 1)}>Next</button> */}
       {isWon && <WinModal onReset={onWinReset} score={score}/>}
