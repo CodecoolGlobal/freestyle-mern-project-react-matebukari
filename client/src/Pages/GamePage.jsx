@@ -7,6 +7,18 @@ import LosingModal from "../Components/LosingModal";
 import ProgressList from "../Components/ProgressList";
 import "./styles/gamePage.css";
 import UserDropDown from "../Components/UserDropDown/UserDropDown";
+import LeaderBoardModal from "../Components/LeaderBoardModal";
+import AllQuestionsModal from "../Components/AllQusetionsModal";
+
+const updateUser = (user) => {
+  return fetch(`/api/user/${user._id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(user),
+  }).then((res) => res.json());
+};
 
 export default function GamePage() {
   const userJSON = localStorage.getItem("user")
@@ -21,6 +33,8 @@ export default function GamePage() {
   const [score, setScore] = useState(0)
   const [prices, setPrices] = useState([]);
   const [openDropDown, setOpenDropDown] = useState(false)
+  const [showLeaderBoard, setShowLeaderBoard] = useState(false)
+  const [showAllQuestion, setShowAllQuestion] = useState(false)
 
   function handleSaveScore(){
     if ((progress + 1) % 3 === 0){
@@ -34,13 +48,25 @@ export default function GamePage() {
   }, [isWon, isLost])
 
 
-  function onReset(){
-    setGameStart(false)
-    setIsLost(false)
-    setProgress(0)
-    setIsWon(false)
+  function onLoseReset(){
+    setGameStart(false);
+    setIsLost(false);
+    setProgress(0);
+    setIsWon(false);
   }
 
+  const newUser = {
+    ...userData,
+    score: (userData.score + score),
+  }
+
+  function onWinReset () {
+    setGameStart(false);
+    setIsLost(false);
+    setProgress(0);
+    setIsWon(false);
+    updateUser(newUser);
+  }
 
   async function handleGameStart() {
     const response = await fetch('/api/questions-ingame');
@@ -54,16 +80,29 @@ export default function GamePage() {
     setShowQuestionModal(true);
   }
 
+  function handleShowLeaderBoard () {
+    setShowLeaderBoard(true);
+  }
+
+  function handleShowQuestions () {
+    setShowAllQuestion(true);
+  }
 
   return (
     <div className="game-root">
       <nav className="nav-bar">
         {/* onMyQuestion={} onAllQuestion={} */}
-        {openDropDown && (<UserDropDown onAddQuestion={handleAddQuestion}/>)}
-        <span onClick={() => setOpenDropDown((prev) => !prev)}>{userData.name}
+        {openDropDown && (<UserDropDown onAddQuestion={handleAddQuestion} onShowQuestions={handleShowQuestions} onShowLeaderBoard={handleShowLeaderBoard}/>)}
           {/* <img src="./d*ckpic.jpg" alt="d*ckpic" /> */}
-        </span>
+      {/* <button onClick={handleAddQuestion}>Add questions</button>
+      <button onClick={handleShowLeaderBoard}>Leader Booard</button>
+      <button onClick={handleShowQuestions}>All questions</button> */}
+      <div onClick={() => setOpenDropDown((prev) => !prev)}>{userData.name}
+      {/* <img src="./d*ckpic.jpg" alt="d*ckpic" /> */}
+      </div>
       </nav>
+    {showLeaderBoard && <LeaderBoardModal toggleModal={setShowLeaderBoard}/>}
+    {showAllQuestion && <AllQuestionsModal toggleModal={setShowAllQuestion}/>}
     {!gameStart && <>
       <div className="startBtn-container">
         <div className="startBtn-center">
@@ -71,6 +110,7 @@ export default function GamePage() {
         </div>
       </div>
       {showQuestionModal && <AddQuestionModal user={userData} toggleModal={setShowQuestionModal}/>}
+      
     </>}
     {gameStart && 
     <>
@@ -83,11 +123,12 @@ export default function GamePage() {
         onWinning={setIsWon}
         onLosing={setIsLost}
         maxQuestions={questions.length}
-        correctAnswer={questions[progress].correctAnswer}/>}
+        correctAnswer={questions[progress].correctAnswer}
+        difficulty={questions[progress].difficulty}/>}
       {/* <button onClick={() => setProgress((prev) => prev - 1)}>Prev</button>
       <button onClick={() => setProgress((prev) => prev + 1)}>Next</button> */}
-      {isWon && <WinModal onReset={onReset} score={score}/>}
-      {isLost && <LosingModal onReset={onReset}/>}
+      {isWon && <WinModal onReset={onWinReset} score={score}/>}
+      {isLost && <LosingModal onReset={onLoseReset}/>}
 
     </>
     }
