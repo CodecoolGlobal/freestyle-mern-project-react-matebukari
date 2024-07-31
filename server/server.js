@@ -132,8 +132,7 @@ app.get('/api/questions-all', async (req, res) => {
 });
 
 app.get('/api/questions-by-id/:id', async (req, res) => {
-  console.log(req.params.id)
-  res.json(await Question.find({user: req.params.id}).populate('user')); 
+  res.json(await Question.find({user: new mongoose.Types.ObjectId(req.params.id)}).populate('user')); 
 });
 
 

@@ -18,15 +18,9 @@
 
 .supports-container {
   position: fixed; /* Stay in place */
-<<<<<<< HEAD
-  z-index: 1000; /* Sit on top */
+  z-index: 3; /* Sit on top */
   right: 32.5%;
   bottom: 10%;
-=======
-  z-index: 3; /* Sit on top */
-  left: 1%;
-  top: 18%;
->>>>>>> userDropDown
   width: auto;
   height: auto;
 }
@@ -106,15 +100,9 @@
 
 .question-container{
   position: fixed; /* Stay in place */
-<<<<<<< HEAD
-  z-index: 1000; /* Sit on top */
+  z-index: 3; /* Sit on top */
   left: 7%;
   bottom: 40%;
-=======
-  z-index: 3; /* Sit on top */
-  left: 2%;
-  bottom: 35%;
->>>>>>> userDropDown
   width: auto;
   height: auto;
   text-align: center;
@@ -126,15 +114,9 @@
 
 .answers-container{
   position: fixed; /* Stay in place */
-<<<<<<< HEAD
-  z-index: 1000; /* Sit on top */
+  z-index: 3; /* Sit on top */
   left: 6%;
   bottom: -10%;
-=======
-  z-index: 3; /* Sit on top */
-  left: 5%;
-  bottom: -5%;
->>>>>>> userDropDown
   width: auto;
   height: auto;
   overflow: auto; /* Enable scroll if needed */
