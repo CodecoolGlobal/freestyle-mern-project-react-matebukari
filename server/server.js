@@ -63,6 +63,19 @@ async function getGameQuestions (numberOfQuestions){
   return gameQuestions;
 }
 
+async function removeQuestion(id) {
+  await Question.findByIdAndDelete(id);
+}
+
+app.delete('/api/question/:id', async (req, res, next) => {
+  try {
+    await removeQuestion(req.params.id);
+    res.json({success: true});
+  } catch (error) {
+    res.status(400).json({ success: false });
+  }
+});
+
 app.post('/api/user', async (req, res) => {
   const user = req.body;
   const existingUser = await User.findOne({ name: user.userName });

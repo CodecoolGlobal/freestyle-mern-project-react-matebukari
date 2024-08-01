@@ -1,13 +1,17 @@
 
 
-export default function MyQuestionsTable ({questions}) {
+export default function MyQuestionsTable ({questions, onModifyQuestion}) {
 
 
-  function handleUpdateClick (){
+  function handleUpdateClick (selectedQuestion){
     
   }
-  function handleDeleteClick (){
-
+  function handleDeleteClick (selectedQuestion){
+    const newQuestions = questions.filter((question) => question._id !== selectedQuestion._id);
+    onModifyQuestion(newQuestions);
+    fetch(`/api/question/${selectedQuestion._id}`, {
+      method: "DELETE"
+    });
   }
 
 
@@ -38,8 +42,8 @@ export default function MyQuestionsTable ({questions}) {
                 <td>{question.correctAnswer}</td>
                 <td>{question.difficulty}</td>
                 <td>
-                  <button onClick={handleUpdateClick}>UPDATE</button>
-                  <button onClick={handleDeleteClick}>DELETE</button>
+                  <button onClick={() => handleUpdateClick(question)}>UPDATE</button>
+                  <button onClick={() => handleDeleteClick(question)}>DELETE</button>
                 </td>
               </tr>
             ))

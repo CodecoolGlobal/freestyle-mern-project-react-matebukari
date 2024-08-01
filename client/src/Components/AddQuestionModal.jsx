@@ -25,6 +25,7 @@ export default function AddQuestionModal ({user, toggleModal}) {
       body: JSON.stringify(question)
     });
     const result = await response.json();
+    toggleModal(false);
     console.log(result);
   }
 

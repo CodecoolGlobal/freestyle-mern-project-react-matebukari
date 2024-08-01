@@ -26,7 +26,7 @@ export default function MyQuestions () {
   return (
     <div className={"my-question-table"}>
     { myQuestions !== null ? (
-    <MyQuestionsTable questions={myQuestions}/>
+    <MyQuestionsTable questions={myQuestions} onModifyQuestion={setMyQuestions}/>
     ) : (
       <h1> loading </h1>
     )}
