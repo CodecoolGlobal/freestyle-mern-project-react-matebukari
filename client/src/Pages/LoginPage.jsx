@@ -3,11 +3,15 @@ import UserNameInput from "../Components/UserNameInput";
 import UserPasswordInput from "../Components/UserPasswordInput";
 import { useNavigate, Link } from "react-router-dom";
 import "./styles/loginPage.css";
+import useSound from 'use-sound';
+import themeSong from "../sounds/themeSong.mp3"
+
 
 export default function LoginPage() {
   const [userName, setUserName] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [validLogin, setValidLogin] = useState(null);
+  const [theme, {stop}] = useSound(themeSong);
 
   const navigate = useNavigate();
 
@@ -25,6 +29,10 @@ export default function LoginPage() {
         localStorage.setItem("user", JSON.stringify(result.user));
         console.log('anyu');
         navigate('/game')
+        theme();
+        setTimeout(() => {
+          stop();
+        }, 13000)
       }
     } catch (error) {
       console.error(`szar minden is!! :,( ${error}`);
