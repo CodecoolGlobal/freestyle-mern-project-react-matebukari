@@ -1,8 +1,8 @@
 .answers-container{
   position: fixed; /* Stay in place */
   z-index: 3; /* Sit on top */
-  left: 6%;
-  bottom: -10%;
+  left: 9%;
+  bottom: -7%;
   width: auto;
   height: auto;
   overflow: auto; /* Enable scroll if needed */
@@ -41,6 +41,7 @@
 .answerA{
   display: grid;
   grid-template-areas: "a b";
+  text-align: center;
   align-content: center;
   align-items: center;
   justify-items: start;
@@ -52,15 +53,16 @@
   color: white; /* Text color */
   background-color: black; /* Background color */
   font-family: Arial, sans-serif; /* Font family */
-  font-size: 1.5rem; /* Font size */
+  font-size: 1.25rem; /* Font size */
   position: relative; /* Position for the arrow */
-  min-height: 60px;
+  min-height: 80px;
   width: 300px;
 }
 
 .answerB{
   display: grid;
   grid-template-areas: "a b";
+  text-align: center;
   align-content: center;
   align-items: center;
   justify-items: start;
@@ -72,15 +74,16 @@
   color: white; /* Text color */
   background-color: black; /* Background color */
   font-family: Arial, sans-serif; /* Font family */
-  font-size: 1.5rem; /* Font size */
+  font-size: 1.25rem; /* Font size */
   position: relative; /* Position for the arrow */
-  min-height: 60px;
+  min-height: 80px;
   width: 300px;
 }
 
 .answerC{
   display: grid;
   grid-template-areas: "a b";
+  text-align: center;
   align-content: center;
   align-items: center;
   justify-items: start;
@@ -92,15 +95,16 @@
   color: white; /* Text color */
   background-color: black; /* Background color */
   font-family: Arial, sans-serif; /* Font family */
-  font-size: 1.5rem; /* Font size */
+  font-size: 1.25rem; /* Font size */
   position: relative; /* Position for the arrow */
-  min-height: 60px;
+  min-height: 80px;
   width: 300px;
 }
 
 .answerD{
   display: grid;
   grid-template-areas: "a b";
+  text-align: center;
   align-content: center;
   align-items: center;
   justify-items: start;
@@ -112,9 +116,9 @@
   color: white; /* Text color */
   background-color: black; /* Background color */
   font-family: Arial, sans-serif; /* Font family */
-  font-size: 1.5rem; /* Font size */
+  font-size: 1.25rem; /* Font size */
   position: relative; /* Position for the arrow */
-  height: 60px;
+  height: 80px;
   width: 300px;
 }
 

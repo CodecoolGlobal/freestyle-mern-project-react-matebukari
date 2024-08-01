@@ -3,22 +3,46 @@ import Supports from "./Supports/Supports";
 import "../Pages/styles/answers.css"
 
 export default function Answers ({answers, progress, correctAnswer, onProgress, onWinning, onLosing, maxQuestions, difficulty}){
-  console.log(answers);
   const [hiddenAnswers, setHiddenAnswers] = useState([]);
+  const [isSelected, setIsSelected] = useState(false);
 
-
-  function handleAnswer(selectedAnswer){
-    if (selectedAnswer === correctAnswer) {
-      console.log('Corrtect answer');
-      if (progress >= maxQuestions - 1){
-        onWinning(true)
-      } else {
-        onProgress((prev) => prev + 1);
-      }
+  function handleAnswer(selectedAnswer, event) {
+  let chosenAnswer; 
+    if (event.target.className === `answer${selectedAnswer}`) {
+      chosenAnswer = event.target
     } else {
-      console.log('worng answer');
-      onLosing(true)
+      chosenAnswer = event.target.parentNode
     }
+    setIsSelected(true);
+    chosenAnswer.style.backgroundColor = "yellow";
+    chosenAnswer.style.color = "black";
+
+    setTimeout(() => {
+      if (selectedAnswer === correctAnswer) {
+        chosenAnswer.style.backgroundColor = "green";
+        chosenAnswer.style.color = "white";
+      } else {
+        chosenAnswer.style.backgroundColor = "red";
+        chosenAnswer.style.color = "white";
+      }
+    }, 3000);
+
+    setTimeout(() => {
+
+      chosenAnswer.style.backgroundColor = "";
+      chosenAnswer.style.color = "";
+
+      if (selectedAnswer === correctAnswer) {
+        if (progress >= maxQuestions - 1) {
+          onWinning(true);
+        } else {
+          onProgress(prev => prev + 1);
+        }
+      } else {
+        onLosing(true);
+      }
+      setIsSelected(false);
+    }, 5000);
   }
 
 
@@ -27,10 +51,38 @@ export default function Answers ({answers, progress, correctAnswer, onProgress, 
       <Supports correctAnswer={correctAnswer} onFiftyFifty={setHiddenAnswers} progress={progress} difficulty={difficulty}/>
       <div className="answers-container">
         <div className="answers-content">
-          <div className={hiddenAnswers.includes('A') ? "answer-hide" : "answerA"} onClick={() => handleAnswer('A')}><div className="letter">A: </div> <div>{answers.answerA}</div></div>
-          <div className={hiddenAnswers.includes('B') ? "answer-hide" : "answerB"} onClick={() => handleAnswer('B')}><div className="letter">B: </div> <div>{answers.answerB}</div></div>
-          <div className={hiddenAnswers.includes('C') ? "answer-hide" : "answerC"} onClick={() => handleAnswer('C')}><div className="letter">C: </div> <div>{answers.answerC}</div></div>
-          <div className={hiddenAnswers.includes('D') ? "answer-hide" : "answerD"} onClick={() => handleAnswer('D')}><div className="letter">D: </div> <div>{answers.answerD}</div></div>
+          <button disabled={isSelected} className={hiddenAnswers.includes('A') ? "answer-hide" : "answerA"} onClick={(event) => handleAnswer('A', event)}>
+            <div className="letter" >
+              A: 
+            </div> 
+            <div>
+              {answers.answerA}
+              </div>
+            </button>
+          <button disabled={isSelected} className={hiddenAnswers.includes('B') ? "answer-hide" : "answerB"} onClick={(event) => handleAnswer('B', event)}>
+            <div className="letter">
+              B: 
+            </div> 
+            <div>
+              {answers.answerB}
+            </div>
+          </button>
+          <button disabled={isSelected} className={hiddenAnswers.includes('C') ? "answer-hide" : "answerC"} onClick={(event) => handleAnswer('C', event)}>
+            <div className="letter">
+              C: 
+            </div> 
+            <div>
+              {answers.answerC}
+            </div>
+          </button>
+          <button disabled={isSelected} className={hiddenAnswers.includes('D') ? "answer-hide" : "answerD"} onClick={(event) => handleAnswer('D', event)}>
+            <div className="letter">
+              D: 
+            </div> 
+            <div>
+              {answers.answerD}
+            </div>
+          </button>
         </div>
       </div>
     </>

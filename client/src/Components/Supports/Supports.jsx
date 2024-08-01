@@ -23,6 +23,7 @@ export default function Supports({
 
   useEffect(() => {
     onFiftyFifty([]);
+    setRemainingAnswers([]);
     setAudienceAnswers({ A: 0, B: 0, C: 0, D: 0, answersCount: 0 });
     setShowVotes(false);
     setShowJoker(false);
