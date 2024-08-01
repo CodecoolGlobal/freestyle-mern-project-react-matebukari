@@ -5,7 +5,6 @@ export default function UserPasswordInput ({ onPasswordInput }) {
   function handleInputChange (event) {
     const userPassword = event.target.value;
     onPasswordInput(userPassword);
-    console.log(userPassword);
   }
 
   return (

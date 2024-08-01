@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
-import AddQuestionModal from "../Components/AddQuestionModal";
-import GameQuestion from "../Components/GameQuestion";
-import Answers from "../Components/Answers";
-import WinModal from "../Components/WinModal";
-import LosingModal from "../Components/LosingModal";
-import ProgressList from "../Components/ProgressList";
-import "./styles/gamePage.css";
-import UserDropDown from "../Components/UserDropDown/UserDropDown";
-import LeaderBoardModal from "../Components/LeaderBoardModal";
-import AllQuestionsModal from "../Components/AllQuestionsModal.jsx";
-import CheckpointModal from "../Components/CheckpointModal";
-import LogOutModal from "../Components/LogOutModal/LogOutModal.jsx";
+import AddQuestionModal from "../../Components/AddQuestionModal/AddQuestionModal.jsx";
+import GameQuestion from "../../Components/GameQuestion/GameQuestion.jsx";
+import Answers from "../../Components/Answers/Answers.jsx";
+import WinModal from "../../Components/WinModal/WinModal.jsx";
+import LosingModal from "../../Components/LosingModal/LosingModal.jsx";
+import ProgressList from "../../Components/ProgressList/ProgressList.jsx";
+import "./gamePage.css";
+import UserDropDown from "../../Components/UserDropDown/UserDropDown.jsx";
+import LeaderBoardModal from "../../Components/LeaderBoardModal/LeaderBoardModal.jsx";
+import AllQuestionsModal from "../../Components/AllQuestionsModal/AllQuestionsModal.jsx";
+import CheckpointModal from "../../Components/CheckPointModal/CheckpointModal.jsx";
+import LogOutModal from "../../Components/LogOutModal/LogOutModal.jsx";
 import useSound from 'use-sound';
-import questionMusic from "../sounds/questionSound.mp3"
-import checkpointMusic from "../sounds/checkpointSound.mp3"
+import questionMusic from "../../sounds/questionSound.mp3"
+import checkpointMusic from "../../sounds/checkpointSound.mp3"
 
 
 const updateUser = async (user) => {

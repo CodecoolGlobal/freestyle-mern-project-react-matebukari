@@ -5,7 +5,6 @@ export default function UserNameInput ({ onNameInput }) {
   function handleInputChange (event) {
     const userName = event.target.value;
     onNameInput(userName);
-    console.log(userName);
   }
 
   return (

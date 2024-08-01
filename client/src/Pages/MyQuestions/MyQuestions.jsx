@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import MyQuestionsTable from "../../Components/MyQuestionsTable/MyQuestionsTable";
 import { useParams } from "react-router-dom";
+import './myQuestions.css';
 
 export default function MyQuestions () {
   const [myQuestions, setMyQuestions] = useState(null)
@@ -21,7 +22,6 @@ export default function MyQuestions () {
     getQuestions();
   }, []);
   
-  console.log(myQuestions)
   
   return (
     <div className={"my-question-table"}>

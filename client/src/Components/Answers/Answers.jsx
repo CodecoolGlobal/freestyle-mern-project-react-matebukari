@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Supports from "./Supports/Supports";
-import "../Pages/styles/answers.css"
+import Supports from "../Supports/Supports";
+import "./answers.css"
 
 export default function Answers ({answers, progress, correctAnswer, onProgress, onWinning, onLosing, maxQuestions, difficulty}){
   const [hiddenAnswers, setHiddenAnswers] = useState([]);

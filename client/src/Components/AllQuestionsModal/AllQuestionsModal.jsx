@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "../Pages/styles/allQuestionsModal.css"
+import "./allQuestionsModal.css"
 
 async function fetchQuestions() {
   const response = await fetch('/api/questions-all');
