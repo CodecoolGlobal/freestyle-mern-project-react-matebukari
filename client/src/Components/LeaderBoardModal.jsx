@@ -46,7 +46,7 @@ export default function LeaderBoardModal ({ toggleModal }) {
                 <tr key={i}>
                   <td>{i + 1}</td>
                   <td>{user.name}</td>
-                  <td>{user.score}</td>
+                  <td>{`${new Intl.NumberFormat('en-HU').format(user.score)} Ft`}</td>
                 </tr>
               ))}
             </tbody>

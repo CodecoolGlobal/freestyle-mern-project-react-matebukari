@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import "chart.js/auto";
+import "./supportFeatures.css"
 
 export default function Supports({
   correctAnswer,
@@ -148,13 +149,13 @@ export default function Supports({
           text: "Votes",
           color: "white",
           font: {
-            size: 12, // Change the font size of the y-axis title
+            size: 24, // Change the font size of the y-axis title
           },
         },
         ticks: {
           color: "white",
           font: {
-            size: 12, // Change the font size of the y-axis labels
+            size: 24, // Change the font size of the y-axis labels
           },
         },
         grid: {
@@ -167,13 +168,13 @@ export default function Supports({
           text: "Answers",
           color: "white",
           font: {
-            size: 20, // Change the font size of the x-axis title
+            size: 24, // Change the font size of the x-axis title
           },
         },
         ticks: {
           color: "white",
           font: {
-            size: 20, // Change the font size of the x-axis labels
+            size: 24, // Change the font size of the x-axis labels
           },
         },
         grid: {
