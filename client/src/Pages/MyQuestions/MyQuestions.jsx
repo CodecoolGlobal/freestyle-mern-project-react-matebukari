@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import MyQuestionsTable from "../../Components/MyQuestionsTable/MyQuestionsTable";
-import "./myQuestions.css";
 import { useParams } from "react-router-dom";
 
 export default function MyQuestions () {
