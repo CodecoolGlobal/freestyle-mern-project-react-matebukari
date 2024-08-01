@@ -6,6 +6,7 @@ import Layout from './Layout/Layout.jsx'
 import LoginPage from './Pages/LoginPage.jsx'
 import RegisterPage from './Pages/RegisterPage.jsx'
 import GamePage from './Pages/GamePage.jsx'
+import MyQuestions from "./Pages/MyQuestions/MyQuestions.jsx"
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,11 @@ const router = createBrowserRouter([
         path: '/game',
         element: <GamePage/>
       },
+      {
+        path: '/questions-by-user/:id',
+        element: <MyQuestions/>
+      }
+
     ]
   }
 ]);

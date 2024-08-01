@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 export default function LogOutModal({toggleModal}) {
 
   const navigate = useNavigate()
+  
   function handleClose (event) {
     if(event.target.id === 'overlay'){
       toggleModal(false);

@@ -8,7 +8,7 @@ import ProgressList from "../Components/ProgressList";
 import "./styles/gamePage.css";
 import UserDropDown from "../Components/UserDropDown/UserDropDown";
 import LeaderBoardModal from "../Components/LeaderBoardModal";
-import AllQuestionsModal from "../Components/AllQusetionsModal";
+import AllQuestionsModal from "../Components/AllQuestionsModal.jsx";
 import CheckpointModal from "../Components/CheckpointModal";
 import LogOutModal from "../Components/LogOutModal/LogOutModal.jsx";
 

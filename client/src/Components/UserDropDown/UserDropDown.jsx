@@ -3,15 +3,15 @@ import "./UserDropDown.css";
 import { useNavigate } from "react-router-dom";
 
 export default function UserDropDown ({onAddQuestion, onShowLeaderBoard, onShowQuestions, onLogOut}) {
-//onMyQuestion, onAllQuestion,
-//onClick={onMyQuestion}
-//onClick={onAllQuestion}
-const [validLogout, setValidLogout] = useState(false)
-console.log(onShowLeaderBoard)
-console.log(onShowQuestions)
-
+console.log(onMyQuestion)
 const navigate = useNavigate()
 
+function onMyQuestion(){
+  const userJSON = localStorage.getItem("user");
+  const userId = JSON.parse(userJSON)._id;
+  console.log(userId)
+  navigate(`/questions-by-user/${userId}`)
+}
 
 
 
@@ -23,7 +23,7 @@ const navigate = useNavigate()
           </li>
           <br/>
           <li>
-          <button >My questions</button>
+          <button onClick={onMyQuestion}>My questions</button>
           </li>
           <br/>
           <li>
