@@ -58,14 +58,14 @@
   margin-bottom: 15px;
 }
 
-label {
+.modal-content {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
   color: #bbbbbb;
 }
 
-textarea, input[type="text"], select {
+.modal-content textarea, .modal-content [type="text"], select {
   width: 95%;
   padding: 10px;
   border-radius: 5px;
@@ -75,12 +75,12 @@ textarea, input[type="text"], select {
   resize: vertical;
 }
 
-textarea:focus, input[type="text"]:focus, select:focus {
+.modal-content textarea:focus, .modal-content input[type="text"]:focus, select:focus {
   outline: none;
   border-color: #555;
 }
 
-button[type="submit"] {
+.modal-content [type="submit"] {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
@@ -90,6 +90,6 @@ button[type="submit"] {
   font-size: 16px;
 }
 
-button[type="submit"]:hover {
+.modal-content [type="submit"]:hover {
   background-color: #3700b3;
 }
