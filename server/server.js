@@ -67,12 +67,25 @@ async function removeQuestion(id) {
   await Question.findByIdAndDelete(id);
 }
 
+async function updateQuestion(id, newQuestion) {
+  return await Question.findOneAndUpdate({_id: id}, { $set: {...newQuestion}}, {new: true});
+}
+
 app.delete('/api/question/:id', async (req, res, next) => {
   try {
     await removeQuestion(req.params.id);
     res.json({success: true});
   } catch (error) {
     res.status(400).json({ success: false });
+  }
+});
+
+app.patch('/api/question/:id', async (req, res, next) => {
+  try {
+    const newQuestion = await updateQuestion(req.params.id, req.body);
+    res.json({success: true, questions: questions});
+  } catch (error) {
+    res.status(400).json({ success: false, error: error });
   }
 });
 

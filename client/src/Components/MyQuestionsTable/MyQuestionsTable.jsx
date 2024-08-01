@@ -1,10 +1,14 @@
+import { useState } from "react";
+import UpdateQuestion from "../../Components/MyQuestionsTable/UpdateQuestion";
 
 
-export default function MyQuestionsTable ({questions, onModifyQuestion}) {
-
+export default function MyQuestionsTable ({questions, onModifyQuestion, onUpdate}) {
+  const [toggleModal, setToggleModal] = useState(false);
+  const [selectedQuestion, setSelectedQuestion] = useState(null);
 
   function handleUpdateClick (selectedQuestion){
-    
+    setSelectedQuestion(selectedQuestion)
+    setToggleModal(true);
   }
   function handleDeleteClick (selectedQuestion){
     const newQuestions = questions.filter((question) => question._id !== selectedQuestion._id);
@@ -16,6 +20,8 @@ export default function MyQuestionsTable ({questions, onModifyQuestion}) {
 
 
   return (
+    <>
+    {toggleModal && <UpdateQuestion onToggleModal={setToggleModal} selectedQuestion={selectedQuestion} onUpdate={onUpdate}/>}
     <div>
       <table>
         <thead>
@@ -49,11 +55,12 @@ export default function MyQuestionsTable ({questions, onModifyQuestion}) {
             ))
           ) : (
             <tr>
-              <h1>Loading...</h1>
+              <h1>No questions found!</h1>
             </tr>
           )}
         </tbody>
       </table>
     </div>
+  </>
   );
 }
