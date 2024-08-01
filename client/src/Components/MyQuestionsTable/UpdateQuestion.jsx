@@ -1,6 +1,6 @@
-import "../Pages/styles/addQuestionModal.css"
+import "../../Pages/styles/addQuestionModal.css"
 
-export default function AddQuestionModal ({user, toggleModal}) {
+export default function AddQuestionModal ({onToggleModal, selectedQuestion, onUpdate}) {
   
   async function handleSubmit (event) {
     event.preventDefault();
@@ -13,25 +13,24 @@ export default function AddQuestionModal ({user, toggleModal}) {
         answerC: questionData.get('answerC'),
         answerD: questionData.get('answerD'),
       },
-      user: user['_id'],
+      user: selectedQuestion.user._id,
       correctAnswer: questionData.get('correctAnswer'),
-      difficulty: questionData.get('difficulty'),
+      difficulty: Number(questionData.get('difficulty')),
     }
-    console.log(user);
     console.log(question);
-    const response = await fetch('/api/question', {
-      method: 'POST',
+    console.log(selectedQuestion.user);
+      await fetch(`/api/question/${selectedQuestion._id}`, {
+      method: 'PATCH',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(question)
     });
-    const result = await response.json();
-    toggleModal(false);
-    console.log(result);
+    onUpdate((prev) => !prev)
+    onToggleModal(false);
   }
 
   function handleClose (event){
     if(event.target.id === 'overlay'){
-      toggleModal(false);
+      onToggleModal(false);
     }
   }
 
@@ -42,34 +41,34 @@ export default function AddQuestionModal ({user, toggleModal}) {
             <form onSubmit={handleSubmit} action="submit">
             <div>
               <label className="add-question-label"> Type your question here:
-                <textarea name='question' type="text" />
+                <textarea defaultValue={selectedQuestion.question} name='question' type="text" />
               </label>
             </div>
               <div className='answer-inputs'>
               <div>
                 <label className="answer-a"> Answer A:
-                  <input name='answerA' type="text" />
+                  <input defaultValue={selectedQuestion.answers.answerA} name='answerA' type="text" />
                 </label> 
               </div>
               <div>
                 <label className="answer-b"> Answer B:
-                  <input name='answerB' type="text" />
+                  <input defaultValue={selectedQuestion.answers.answerB} name='answerB' type="text" />
                 </label>
               </div>
               <div>
                 <label className="answer-c"> Answer C:
-                  <input name='answerC' type="text" />
+                  <input defaultValue={selectedQuestion.answers.answerC} name='answerC' type="text" />
                 </label>
               </div>
               <div>
                 <label className="answer-d"> Answer D:
-                  <input name='answerD' type="text" />
+                  <input defaultValue={selectedQuestion.answers.answerD} name='answerD' type="text" />
                 </label>
               </div>
               </div>
               <div>
               <label>Select the correct answer for your question:
-                <select name="correctAnswer">
+                <select defaultValue={selectedQuestion.correctAnswer} name="correctAnswer">
                   <option value="A">A</option>
                   <option value="B">B</option>
                   <option value="C">C</option>
@@ -79,14 +78,14 @@ export default function AddQuestionModal ({user, toggleModal}) {
               </div>
               <div>
               <label>Select the right difficulty of your question:
-                <select name="difficulty">
+                <select defaultValue={selectedQuestion.difficulty} name="difficulty">
                   <option value="1">Easy</option>
                   <option value="2">Medium</option>
                   <option value="3">Hard</option>
                 </select>
               </label>
               </div>
-              <button type="submit">Add question</button>
+              <button type="submit">Update question</button>
             </form>
           </div>
         </div>
