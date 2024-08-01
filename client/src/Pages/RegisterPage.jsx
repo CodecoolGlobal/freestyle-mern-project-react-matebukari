@@ -19,7 +19,7 @@ export default function RegisterPage() {
       const result = await ressposne.json();
       setValidRegister(result.success);
     } catch (error) {
-      console.error("szar az egész!! :,(");
+      console.error(error);
     }
   }
 

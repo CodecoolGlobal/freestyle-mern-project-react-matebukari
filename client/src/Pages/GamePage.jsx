@@ -60,7 +60,7 @@ export default function GamePage() {
       }
     }
 
-  }, [ progress])
+  }, [ progress]);
 
   function onLoseReset(){
     setGameStart(false);
