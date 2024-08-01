@@ -38,7 +38,6 @@ export default function Supports({
         if (remainingAnswers.length !== 0) {
           randomIndex = Math.floor(Math.random() * 2);
           randomAnswer = remainingAnswers[randomIndex];
-          console.log(remainingAnswers);
         }
         if (audienceAnswers.answersCount < maxAudience) {
           setAudienceAnswers((prev) => {
@@ -49,16 +48,13 @@ export default function Supports({
             };
           });
           if (audienceAnswers.answersCount % (5 * difficulty) === 0) {
-            console.log(correctAnswer);
             setAudienceAnswers((prev) => {
               return {
                 ...prev,
                 [correctAnswer]: prev[correctAnswer] + 2,
               };
             });
-            console.log("hello");
           }
-          console.log(audienceAnswers);
         }
       }
     }, 100);
@@ -67,7 +63,6 @@ export default function Supports({
   function handleFiftyFity() {
     const hiddenAnswers = [];
     const remainingAnswers = [];
-    console.log(hiddenAnswers);
     const answers = ["A", "B", "C", "D"];
     while (hiddenAnswers.length < 2) {
       const randomAnswerIndex = Math.floor(Math.random() * 4);
@@ -99,7 +94,6 @@ export default function Supports({
     }));
     setUsedSupports([...usedSupports, "audience"]);
     setShowVotes(true);
-    console.log(audienceAnswers);
   }
 
   function handleJoker() {

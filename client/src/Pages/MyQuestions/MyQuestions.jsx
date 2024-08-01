@@ -23,7 +23,6 @@ export default function MyQuestions () {
     getQuestions();
   }, [isUpdated]);
   
-  console.log(myQuestions)
   
   return (
     <div className={"my-question-table"}>

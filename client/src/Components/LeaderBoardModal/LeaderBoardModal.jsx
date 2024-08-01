@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "../Pages/styles/leaderBoardModal.css"
+import "./leaderBoardModal.css"
 
 async function fetchUsers () {
   const response = await fetch('/api/users');

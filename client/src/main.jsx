@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from './Layout/Layout.jsx'
-import LoginPage from './Pages/LoginPage.jsx'
-import RegisterPage from './Pages/RegisterPage.jsx'
-import GamePage from './Pages/GamePage.jsx'
+import LoginPage from './Pages/LoginPage/LoginPage.jsx'
+import RegisterPage from './Pages/RegisterPage/RegisterPage.jsx'
+import GamePage from './Pages/GamePage/GamePage.jsx'
 import MyQuestions from "./Pages/MyQuestions/MyQuestions.jsx"
 
 const router = createBrowserRouter([

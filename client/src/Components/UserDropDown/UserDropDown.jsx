@@ -3,13 +3,11 @@ import "./UserDropDown.css";
 import { useNavigate } from "react-router-dom";
 
 export default function UserDropDown ({onAddQuestion, onShowLeaderBoard, onShowQuestions, onLogOut}) {
-console.log(onMyQuestion)
 const navigate = useNavigate()
 
 function onMyQuestion(){
   const userJSON = localStorage.getItem("user");
   const userId = JSON.parse(userJSON)._id;
-  console.log(userId)
   navigate(`/questions-by-user/${userId}`)
 }
 

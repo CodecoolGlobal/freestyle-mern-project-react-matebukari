@@ -1,4 +1,4 @@
-import "../Pages/styles/checkpointModal.css"
+import "./checkpointModal.css"
 
 export default function CheckpointModal ({ onClose, onQuit, score}) {
 

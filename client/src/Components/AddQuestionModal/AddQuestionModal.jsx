@@ -1,4 +1,4 @@
-import "../Pages/styles/addQuestionModal.css"
+import "./addQuestionModal.css"
 
 export default function AddQuestionModal ({user, toggleModal}) {
   
@@ -17,16 +17,12 @@ export default function AddQuestionModal ({user, toggleModal}) {
       correctAnswer: questionData.get('correctAnswer'),
       difficulty: questionData.get('difficulty'),
     }
-    console.log(user);
-    console.log(question);
     const response = await fetch('/api/question', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(question)
     });
     const result = await response.json();
-    toggleModal(false);
-    console.log(result);
   }
 
   function handleClose (event){

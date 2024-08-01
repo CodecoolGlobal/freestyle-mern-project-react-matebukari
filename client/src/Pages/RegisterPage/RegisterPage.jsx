@@ -1,8 +1,8 @@
 import { useState } from "react";
-import UserNameInput from "../Components/UserNameInput";
-import UserPasswordInput from "../Components/UserPasswordInput";
+import UserNameInput from "../../Components/UserNameInput/UserNameInput";
+import UserPasswordInput from "../../Components/UserPasswordInput/UserPasswordInput";
 import { Link } from "react-router-dom";
-import "./styles/registerPage.css"
+import "./registerPage.css"
 
 export default function RegisterPage() {
   const [userName, setUserName] = useState("");
@@ -19,7 +19,7 @@ export default function RegisterPage() {
       const result = await ressposne.json();
       setValidRegister(result.success);
     } catch (error) {
-      console.error(error);
+      console.error(`I apologize: ${error}`);
     }
   }
 
