@@ -23,7 +23,7 @@ export default function MyQuestionsTable ({questions, onModifyQuestion, onUpdate
     <>
     {toggleModal && <UpdateQuestion onToggleModal={setToggleModal} selectedQuestion={selectedQuestion} onUpdate={onUpdate}/>}
     <div>
-      <table>
+      <table className="table">
         <thead>
           <tr>
             <th>Question</th>
