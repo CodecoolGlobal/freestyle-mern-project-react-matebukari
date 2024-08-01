@@ -25,14 +25,45 @@
 .modal-content {
   margin: 0;
   padding: 10px 0;
+  padding-bottom: 0;
   color: black;
   margin-top: 20px;
-  padding: 10px 20px;
   background-color: #545454;
   color: white;
   border: none;
-  font-weight: bold;
   font-size: 1rem;
   border-radius: 5px;
   cursor: pointer;
 }
+
+.modal-container:hover {
+  cursor: default;
+}
+
+.modal-content:hover {
+  cursor: default;
+}
+
+.user-content {
+  font-weight: lighter;
+  padding: 10px 20px;
+  border-bottom: solid 3px rgb(17, 0, 205);
+  margin-bottom: 0;
+}
+
+.modal-content :last-child {
+  margin-bottom: 0;
+}
+
+.user-question, .user-answer {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  
+}
+
+.user-question div {
+  padding: 0px;
+}
+
+
+

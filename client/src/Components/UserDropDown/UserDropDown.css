@@ -13,6 +13,8 @@
 }
 
 .user-dropdown-list{
+  display: grid;
+  justify-items: center;
   padding: 0;
   margin: 10px;
 }
@@ -31,6 +33,10 @@
   padding-bottom: 0.4rem;
   border: none;
   cursor: pointer;
+}
+
+.user-dropdown-list button:hover {
+  box-shadow: 0 0 10px rgb(73, 149, 255), 0 0 20px rgb(17, 0, 205);
 }
 
 ul {
