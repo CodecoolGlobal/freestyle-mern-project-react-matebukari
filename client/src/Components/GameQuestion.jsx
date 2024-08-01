@@ -1,3 +1,5 @@
+import "../Pages/styles/gameQuestion.css"
+
 export default function GameQuestion ({questions, progress}) {
   console.log(questions[progress]);
 

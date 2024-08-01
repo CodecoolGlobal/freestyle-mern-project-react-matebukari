@@ -1,0 +1,26 @@
+.progress-container {
+  position: fixed; /* Stay in place */
+  z-index: 4; /* Sit on top */
+  right: 5%;
+  top: 10%;
+  width: 350px;
+  height: auto;
+  overflow: auto; /* Enable scroll if needed */
+}
+
+.progress-content {
+  font-size: 1.7rem;
+  font-weight: bold;
+  background-color: #000000;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  box-shadow: 0 0 10px rgb(73, 149, 255), 0 0 20px rgb(17, 0, 205); /* Blue glow effect */
+  border: 2px solid #A05FFF; /* Color of the border */
+  border-radius: 5px;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.progress-line {
+  display: flex;
+  justify-content: space-between;
+}
