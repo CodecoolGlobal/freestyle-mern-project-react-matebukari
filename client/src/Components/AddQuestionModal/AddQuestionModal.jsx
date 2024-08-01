@@ -32,9 +32,9 @@ export default function AddQuestionModal ({user, toggleModal}) {
   }
 
   return (
-     <div className="modal-overlay" id="overlay" onClick={handleClose}>
-        <div className='modal-container'>
-          <div className='modal-content'>
+     <div className="add-modal-overlay" id="overlay" onClick={handleClose}>
+        <div className='add-modal-container'>
+          <div className='add-modal-content'>
             <form onSubmit={handleSubmit} action="submit">
             <div>
               <label className="add-question-label"> Type your question here:

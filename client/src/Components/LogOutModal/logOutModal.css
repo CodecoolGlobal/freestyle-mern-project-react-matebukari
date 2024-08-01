@@ -1,4 +1,4 @@
-.modal-overlay {
+.logout-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -11,7 +11,7 @@
   z-index: 1000;
 }
 
-.logout-container {
+.logout-modal-container {
   box-shadow: 0 0 10px rgb(73, 149, 255), 0 0 20px rgb(17, 0, 205);
   border: 2px solid #A05FFF; 
   background: rgb(255, 255, 255);

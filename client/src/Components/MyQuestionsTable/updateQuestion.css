@@ -1,4 +1,4 @@
-.modal-overlay {
+.update-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -11,14 +11,14 @@
   z-index: 1000;
 }
 
-.modal-container form {
+.update-modal-container form {
   cursor: default;
   padding: 20px;
   max-width: 600px;
   margin: 0 auto;
 }
 
-.modal-container {
+.update-modal-container {
   cursor: default;
   background: rgb(0, 0, 0);
   padding: 20px;
@@ -31,14 +31,14 @@
   "c d";
 }
 
-.modal-content input {
+.update-modal-content input {
   cursor: default;
   margin: 0;
   padding: 10px 0;
   color: black;
 }
 
-.modal-content button {
+.update-modal-content button {
   margin-top: 20px;
   padding: 10px 20px;
   background-color: rgb(0, 174, 255);
@@ -50,22 +50,22 @@
   cursor: pointer;
 }
 
-.modal-content button:hover {
+.update-modal-content button:hover {
   background-color: #0056b3;
 }
 
-.modal-content div {
+.update-modal-content div {
   margin-bottom: 15px;
 }
 
-.modal-content {
+.update-modal-content {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
   color: #bbbbbb;
 }
 
-.modal-content textarea, .modal-content [type="text"], select {
+.update-modal-content textarea, .update-modal-content [type="text"], select {
   width: 95%;
   padding: 10px;
   border-radius: 5px;
@@ -75,12 +75,12 @@
   resize: vertical;
 }
 
-.modal-content textarea:focus, .modal-content input[type="text"]:focus, select:focus {
+.update-modal-content textarea:focus, .update-modal-content input[type="text"]:focus, select:focus {
   outline: none;
   border-color: #555;
 }
 
-.modal-content [type="submit"] {
+.update-modal-content [type="submit"] {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
@@ -90,6 +90,6 @@
   font-size: 16px;
 }
 
-.modal-content [type="submit"]:hover {
+.update-modal-content [type="submit"]:hover {
   background-color: #3700b3;
 }

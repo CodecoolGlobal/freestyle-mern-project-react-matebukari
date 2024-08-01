@@ -1,4 +1,4 @@
-.modal-overlay {
+.add-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -11,14 +11,14 @@
   z-index: 1000;
 }
 
-.modal-container form {
+.add-modal-container form {
   cursor: default;
   padding: 20px;
   max-width: 600px;
   margin: 0 auto;
 }
 
-.modal-container {
+.add-modal-container {
   cursor: default;
   background: rgb(0, 0, 0);
   padding: 20px;

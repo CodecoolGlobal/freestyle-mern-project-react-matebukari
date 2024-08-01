@@ -17,9 +17,9 @@ export default function LogOutModal({toggleModal}) {
   }
 
   return (
-    <div className="modal-overlay" id="overlay" onClick={handleClose}>
-      <div className="logout-container">
-        <div className="logout-content">
+    <div className="logout-modal-overlay" id="overlay" onClick={handleClose}>
+      <div className="logout-modal-container">
+        <div className="logout-modal-content">
           <h1>You sure?</h1> 
           <button onClick={handleLogOut}> log out </button>
         </div>

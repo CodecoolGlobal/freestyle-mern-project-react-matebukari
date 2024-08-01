@@ -29,9 +29,9 @@ export default function LeaderBoardModal ({ toggleModal }) {
   }
   
   return (
-    <div className="modal-overlay" id="overlay" onClick={handleClose}>
-      <div className='modal-container'>
-        <div className='modal-content'>
+    <div className="leader-modal-overlay" id="overlay" onClick={handleClose}>
+      <div className='leader-modal-container'>
+        <div className='leader-modal-content'>
         {users.length > 0 ? (
           <table className="leader-board">
             <thead>

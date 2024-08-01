@@ -1,4 +1,4 @@
-.modal-overlay {
+.losing-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -11,7 +11,7 @@
   z-index: 1000;
 }
 
-.losing-container {
+.losing-modal-container {
   background: rgb(255, 255, 255);
   padding: 20px;
   border-radius: 8px;
@@ -21,13 +21,13 @@
   color: black;
 }
 
-.losing-content h1,
-.losing-content h2 {
+.losing-modal-content h1,
+.losing-modal-content h2 {
   margin: 0;
   padding: 10px 0;
 }
 
-.losing-content button {
+.losing-modal-content button {
   margin-top: 20px;
   padding: 10px 20px;
   background-color: #007bff;
@@ -37,6 +37,6 @@
   cursor: pointer;
 }
 
-.losing-content button:hover {
+.losing-modal-content button:hover {
   background-color: #0056b3;
 }

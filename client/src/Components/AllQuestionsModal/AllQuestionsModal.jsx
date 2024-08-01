@@ -26,9 +26,9 @@ export default function AllQuestionsModal ({ toggleModal }) {
   }
   
   return (
-    <div className="modal-overlay" id="overlay" onClick={handleClose}>
-      <div className='modal-container'>
-        <div className='modal-content'>
+    <div className="all-modal-overlay" id="overlay" onClick={handleClose}>
+      <div className='all-modal-container'>
+        <div className='all-modal-content'>
         {questions.length > 0 ? (
               questions.map((question, i) => (
                 <div className="user-content" key={`question-${i}`}><strong>Posted by: </strong>{question.user.name }

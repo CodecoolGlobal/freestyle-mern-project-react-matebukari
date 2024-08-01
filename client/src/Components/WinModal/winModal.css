@@ -1,4 +1,4 @@
-.modal-overlay {
+.winning-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -12,7 +12,7 @@
 }
 
 
-.winning-container {
+.winning-modal-container {
   background: white;
   padding: 20px;
   border-radius: 8px;
@@ -22,13 +22,13 @@
   text-align: center;
 }
 
-.winning-content h1,
-.winning-content h2 {
+.winning-modal-content h1,
+.winning-modal-content h2 {
   margin: 0;
   padding: 10px 0;
 }
 
-.winning-content button {
+.winning-modal-content button {
   margin-top: 20px;
   padding: 10px 20px;
   background-color: #007bff;
@@ -38,6 +38,6 @@
   cursor: pointer;
 }
 
-.winning-content button:hover {
+.winning-modal-content button:hover {
   background-color: #0056b3;
 }

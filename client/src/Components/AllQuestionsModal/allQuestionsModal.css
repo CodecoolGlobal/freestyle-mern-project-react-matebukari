@@ -1,4 +1,4 @@
-.modal-overlay {
+.all-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -11,7 +11,7 @@
   z-index: 1000;
 }
 
-.modal-container {
+.all-modal-container {
   background: black; /* Changed to white for better readability */
   padding: 20px;
   border-radius: 8px;
@@ -22,7 +22,7 @@
   text-align: left;
 }
 
-.modal-content {
+.all-modal-content {
   margin: 0;
   padding: 10px 0;
   padding-bottom: 0;
