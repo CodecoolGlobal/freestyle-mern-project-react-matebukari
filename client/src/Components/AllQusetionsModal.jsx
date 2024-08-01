@@ -31,10 +31,10 @@ export default function AllQuestionsModal ({ toggleModal }) {
         <div className='modal-content'>
         {questions.length > 0 ? (
               questions.map((question, i) => (
-                <div key={`question-${i}`}>Posted by: {question.user.name }
-                  <div>Question: {question.question }</div>
-                  <div>Difficulty: Lvl-{question.difficulty}</div>
-                  <div>Answers:
+                <div className="user-content" key={`question-${i}`}><strong>Posted by: </strong>{question.user.name }
+                  <div className="user-question"><strong>Question: </strong>{question.question }</div>
+                  <div><strong>Difficulty: </strong>Lvl-{question.difficulty}</div>
+                  <div className="user-answer"><strong>Answers: </strong>
                     <div>Answer A: {question.answers.answerA}</div>
                     <div>Answer B: {question.answers.answerB}</div>
                     <div>Answer C: {question.answers.answerC}</div>

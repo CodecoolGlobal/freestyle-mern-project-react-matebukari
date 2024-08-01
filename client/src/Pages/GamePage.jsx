@@ -112,7 +112,7 @@ export default function GamePage() {
           onShowQuestions={handleShowQuestions} 
           onShowLeaderBoard={handleShowLeaderBoard} 
           onLogOut={handleLogOut}/>)}
-      <div onClick={() => setOpenDropDown((prev) => !prev)}>{userData.name}</div>
+      <div className="user"onClick={() => setOpenDropDown((prev) => !prev)}>{userData.name}</div>
       </nav>
     {showValidLogout && <LogOutModal toggleModal={setShowValidLogout}/>}
     {showLeaderBoard && <LeaderBoardModal toggleModal={setShowLeaderBoard}/>}
