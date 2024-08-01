@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import "../Pages/styles/progressList.css"
 
 export default function ProgressList ({ maxQuestions, prices, onPriceSet, progress}) {
 

@@ -10,7 +10,7 @@ export default function CheckpointModal ({ onClose, onQuit, score}) {
     <div className="modal-overlay">
       <div className="checkpoint-container">
         <div className="checkpoint-content">
-          <h1>Do you want to end your game now and win {score} Ft</h1> 
+          <h1>Do you want to end your game now and win {`${new Intl.NumberFormat('en-HU').format(score)} Ft`}</h1> 
           <button onClick={closeModal}>No i want to continue</button> <br />
           <button onClick={onQuit}>Yes quit now</button>
         </div>
