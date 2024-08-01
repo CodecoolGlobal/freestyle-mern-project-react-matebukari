@@ -11,6 +11,10 @@ import LeaderBoardModal from "../Components/LeaderBoardModal";
 import AllQuestionsModal from "../Components/AllQusetionsModal";
 import CheckpointModal from "../Components/CheckpointModal";
 import LogOutModal from "../Components/LogOutModal/LogOutModal.jsx";
+import useSound from 'use-sound';
+import questionMusic from "../sounds/questionSound.mp3"
+import checkpointMusic from "../sounds/checkpointSound.mp3"
+
 
 const updateUser = async (user) => {
   const res = await fetch(`/api/user/${user._id}`, {
@@ -39,19 +43,20 @@ export default function GamePage() {
   const [showAllQuestion, setShowAllQuestion] = useState(false);
   const [showCheckpoint, setShowCheckpoint] = useState(false);
   const [showValidLogout, setShowValidLogout] = useState(false)
+  const [questionSound, {stop}] = useSound(questionMusic);
+  const [checkpointSound] = useSound(checkpointMusic);
 
-
-  function handleSaveScore(){
-     setScore(prices[progress])
-  } 
 
   useEffect(()=> {
+    
     if (questions !== null){
+      questionSound();
       if((progress + 1) % (questions.length / 3) === 0 ) {
         setScore(prices[progress])
       }
       if ((progress === 0 ? 1 : progress) % (questions.length / 3) === 0) {
         setShowCheckpoint(true);
+        checkpointSound();
       }
     }
 
@@ -81,8 +86,8 @@ export default function GamePage() {
     const response = await fetch('/api/questions-ingame');
     const result = await response.json();
     setQuestions(result.questions);
-    console.log(result);
     setGameStart(true);
+    questionSound();
   }
 
   function handleAddQuestion () {
