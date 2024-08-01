@@ -1,4 +1,4 @@
-import "../../Pages/styles/addQuestionModal.css"
+import "./updateQuestion.css"
 
 export default function AddQuestionModal ({onToggleModal, selectedQuestion, onUpdate}) {
   
