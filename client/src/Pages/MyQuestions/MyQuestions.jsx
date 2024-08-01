@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import MyQuestionsTable from "../../Components/MyQuestionsTable/MyQuestionsTable";
+import "./myQuestions.css";
 import { useParams } from "react-router-dom";
-
 
 export default function MyQuestions () {
   const [myQuestions, setMyQuestions] = useState(null)
@@ -25,12 +25,12 @@ export default function MyQuestions () {
   console.log(myQuestions)
   
   return (
-    <>
+    <div className={"my-question-table"}>
     { myQuestions !== null ? (
     <MyQuestionsTable questions={myQuestions}/>
     ) : (
       <h1> loading </h1>
     )}
-    </>
+    </div>
   )
 }
