@@ -17,7 +17,7 @@ const filename = url.fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
 app.use(express.json());
-app.use(express.static(path.join(dirname, "../client")));
+app.use(express.static(path.join(dirname, "../frontend")));
 
 async function createUser ({ userName, userPassword }) {
   try {
