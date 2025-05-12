@@ -11,7 +11,7 @@ dotenv.config();
 mongoose.connect(process.env.MONGO_URL);
 
 const app = express();
-const PORT = 4000;
+const PORT = 8080;
 
 const filename = url.fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -186,6 +186,6 @@ app.get('/api/questions-ingame', async (req, res) => {
   }
 })
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on ${PORT}`);
 })
