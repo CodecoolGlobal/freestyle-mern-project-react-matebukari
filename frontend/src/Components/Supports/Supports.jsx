@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import "chart.js/auto";
 import "./supportFeatures.css"
+import jokerImg from "./assets/joker.png";
+import audienceImg from "./assets/audience.png";
 
 export default function Supports({
   correctAnswer,
@@ -60,7 +62,7 @@ export default function Supports({
     }, 100);
   }, [audienceAnswers.answersCount]);
 
-  function handleFiftyFity() {
+  function handleFiftyFifty() {
     const hiddenAnswers = [];
     const remainingAnswers = [];
     const answers = ["A", "B", "C", "D"];
@@ -198,7 +200,7 @@ export default function Supports({
           <button
             className="fifty-fifty"
             disabled={usedSupports.includes("fiftyFifty")}
-            onClick={handleFiftyFity}
+            onClick={handleFiftyFifty}
           >
             50:50
           </button>
@@ -207,14 +209,14 @@ export default function Supports({
             onClick={handleAudience}
             disabled={usedSupports.includes("audience")}
           >
-            <img className="support-img" src=".\src\Components\Supports\assets\audience.png"></img>
+            <img className="support-img" src={audienceImg}></img>
           </button>
           <button
             className="joker"
             onClick={handleJoker}
             disabled={usedSupports.includes("joker")}
           >
-            <img className="support-img" src=".\src\Components\Supports\assets\joker.png"></img>
+            <img className="support-img" src={jokerImg}></img>
           </button>
         </div>
       </div>
