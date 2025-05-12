@@ -55,13 +55,15 @@ export default function GamePage() {
             }
         }
 
-    }, [progress, prices.length]);
+    }, [progress, gameStart]);
 
     function onLoseReset() {
         setGameStart(false);
         setIsLost(false);
         setProgress(0);
         setIsWon(false);
+        setSavedScore(0);
+        setQuestions(null);
         updateUser({
             ...userData,
             score: (userData.score + score),
@@ -74,6 +76,8 @@ export default function GamePage() {
         setProgress(0);
         setIsWon(false);
         setShowCheckpoint(false);
+        setSavedScore(0);
+        setQuestions(null);
         updateUser({
             ...userData,
             score: (userData.score + score),
