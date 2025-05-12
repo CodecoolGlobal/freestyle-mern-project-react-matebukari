@@ -1,8 +1,8 @@
 import { createContext, useContext} from 'react';
 import useSound from 'use-sound';
-import themeSong from '../sounds/themeSong.mp3';
-import questionSong from '../sounds/questionSound.mp3';
-import checkpointSong from '../sounds/checkpointSound.mp3';
+import themeSong from '../Sounds/themeSong.mp3';
+import questionSong from '../Sounds/questionSound.mp3';
+import checkpointSong from '../Sounds/checkpointSound.mp3';
 
 const SoundContext = createContext();
 
