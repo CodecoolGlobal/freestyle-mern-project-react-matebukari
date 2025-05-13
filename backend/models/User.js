@@ -8,7 +8,6 @@ const userSchema = new Schema({
   score: Number,
   createdAt: Date,
   updatedAt: Date,
-  ///image maybe
 });
 
 export default model('User', userSchema);
