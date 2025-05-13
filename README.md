@@ -62,7 +62,7 @@ This **“Who Wants to Be a Millionaire?”** style web game delivers fast-paced
 |--------------|---------------------------------------------|
 | Marcell Nagy | [Dyrun](https://github.com/Dyrun)           |
 | Ádám Németh  | [Nemetabe](https://github.com/nemetabe)     |
-| Bukari Máté  | [Matebukari](https://github.com/matebukari) |
+| Máté Bukari  | [Matebukari](https://github.com/matebukari) |
 
 ## Getting Started
 
