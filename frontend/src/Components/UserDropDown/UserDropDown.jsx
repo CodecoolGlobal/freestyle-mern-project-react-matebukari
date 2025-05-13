@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import "./UserDropDown.css";
 import { useNavigate } from "react-router-dom";
 

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./allQuestionsModal.css"
 
 async function fetchQuestions() {
-  const response = await fetch('/api/questions-all');
+  const response = await fetch('/api/questions/');
   const result = await response.json();
   return result;
 }

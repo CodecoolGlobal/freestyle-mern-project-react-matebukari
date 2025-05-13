@@ -5,19 +5,18 @@ import { Link } from "react-router-dom";
 import "./registerPage.css"
 
 export default function RegisterPage() {
-  const [userName, setUserName] = useState("");
-  const [userPassword, setUserPassword] = useState("");
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
   const [validRegister, setValidRegister] = useState(null);
 
   async function handleRegisterClick() {
     try {
-      const ressposne = await fetch("/api/user", {
+      const response = await fetch("/api/users", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userName, userPassword }),
+        body: JSON.stringify({ name, password }),
       });
-      const result = await ressposne.json();
-      setValidRegister(result.success);
+      setValidRegister(response.ok);
     } catch (error) {
       console.error(`I apologize: ${error}`);
     }
@@ -26,14 +25,14 @@ export default function RegisterPage() {
   return (
     <div className="register-container">
       {validRegister ? (
-        <h1>Succesfull registration!!!</h1>
+        <h1>Successful registration!!!</h1>
       ) : validRegister !== null ? (
-        <h1>Unsuccselfull Registration!!!</h1>
+        <h1>Unsuccessful Registration!!!</h1>
       ) : (
         <></>
       )}
-      <UserNameInput onNameInput={setUserName} /> <br />
-      <UserPasswordInput onPasswordInput={setUserPassword} /> <br />
+      <UserNameInput onNameInput={setName} /> <br />
+      <UserPasswordInput onPasswordInput={setPassword} /> <br />
       <button className="register-button" onClick={handleRegisterClick}>Register</button>
       <br></br>
       <div className="login-link">

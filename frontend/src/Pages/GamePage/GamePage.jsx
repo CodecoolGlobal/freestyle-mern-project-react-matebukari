@@ -15,7 +15,7 @@ import {useSoundContext} from "../../Context/SoundProvider.jsx";
 
 
 const updateUser = async (user) => {
-    const res = await fetch(`/api/user/${user._id}`, {
+    const res = await fetch(`/api/users/${user._id}`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",
@@ -55,7 +55,7 @@ export default function GamePage() {
             }
         }
 
-    }, [progress, gameStart]);
+    }, [progress, gameStart, prices.length]);
 
     function onLoseReset() {
         setGameStart(false);
@@ -85,9 +85,9 @@ export default function GamePage() {
     }
 
     async function handleGameStart() {
-        const response = await fetch('/api/questions-ingame');
+        const response = await fetch('/api/questions/ingame');
         const result = await response.json();
-        setQuestions(result.questions);
+        setQuestions(result);
         setGameStart(true);
         stopAllSound();
     }

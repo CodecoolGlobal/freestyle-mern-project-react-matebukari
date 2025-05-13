@@ -1,4 +1,6 @@
 .my-question-table div{
   justify-content: center;
   text-align: center;
+  overflow: auto;
+  max-height: 90vh;
 }

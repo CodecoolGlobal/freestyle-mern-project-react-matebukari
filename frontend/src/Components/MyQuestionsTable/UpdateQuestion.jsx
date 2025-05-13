@@ -1,6 +1,6 @@
 import "./updateQuestion.css"
 
-export default function AddQuestionModal ({onToggleModal, selectedQuestion, onUpdate}) {
+export default function UpdateQuestion ({onToggleModal, selectedQuestion, onUpdate}) {
   
   async function handleSubmit (event) {
     event.preventDefault();
@@ -19,7 +19,7 @@ export default function AddQuestionModal ({onToggleModal, selectedQuestion, onUp
     }
     console.log(question);
     console.log(selectedQuestion.user);
-      await fetch(`/api/question/${selectedQuestion._id}`, {
+      await fetch(`/api/questions/${selectedQuestion._id}`, {
       method: 'PATCH',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(question)

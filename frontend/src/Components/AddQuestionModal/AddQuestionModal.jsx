@@ -17,12 +17,11 @@ export default function AddQuestionModal ({user, toggleModal}) {
       correctAnswer: questionData.get('correctAnswer'),
       difficulty: questionData.get('difficulty'),
     }
-    const response = await fetch('/api/question', {
+    await fetch('/api/questions/', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(question)
     });
-    const result = await response.json();
   }
 
   function handleClose (event){

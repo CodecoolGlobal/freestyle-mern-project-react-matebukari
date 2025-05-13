@@ -6,8 +6,8 @@ import "./loginPage.css";
 import {useSoundContext} from "../../Context/SoundProvider.jsx";
 
 export default function LoginPage() {
-  const [userName, setUserName] = useState("");
-  const [userPassword, setUserPassword] = useState("");
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
   const [validLogin, setValidLogin] = useState(null);
   const {playTheme} = useSoundContext();
 
@@ -15,15 +15,15 @@ export default function LoginPage() {
 
   async function handleLoginClick() {
     try {
-      const response = await fetch("/api/user/login", {
+      const response = await fetch("/api/users/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userName, userPassword }),
+        body: JSON.stringify({ name, password }),
       });
       const result = await response.json();
-      setValidLogin(result.success);
-      if (result.success) {
-        localStorage.setItem("user", JSON.stringify(result.user));
+      setValidLogin(response.ok);
+      if (response.ok) {
+        localStorage.setItem("user", JSON.stringify(result));
         playTheme();
         navigate('/game');
       }
@@ -36,14 +36,14 @@ export default function LoginPage() {
   return (
     <div className="login-container">
             {validLogin ? (
-        <h1>Successfull Login!!!</h1>
+        <h1>Successfully Login!!!</h1>
       ) : validLogin !== null ? (
-        <h1>Unsuccessfull Login!!!</h1>
+        <h1>Unsuccessfully Login!!!</h1>
       ) : ( //loggedOut ? (<h1>Logged out successfully!!</h1>) :
         <></>
       )}
-      <UserNameInput onNameInput={setUserName} /> <br />
-      <UserPasswordInput onPasswordInput={setUserPassword} /> <br />
+      <UserNameInput onNameInput={setName} /> <br />
+      <UserPasswordInput onPasswordInput={setPassword} /> <br />
       <button className="login-button" onClick={handleLoginClick}>Login</button>
       <br></br>
       <div className="register-link">

@@ -10,7 +10,7 @@ export default function MyQuestions () {
   
   useEffect(() => {
     const fetchQuestions = async (id) => {
-      const res = await fetch(`/api/questions-by-user/${id}`);
+      const res = await fetch(`/api/questions/by-user/${id}`);
       const data = await res.json();
       return data;
     };

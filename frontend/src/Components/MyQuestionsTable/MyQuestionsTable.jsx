@@ -13,7 +13,7 @@ export default function MyQuestionsTable ({questions, onModifyQuestion, onUpdate
   function handleDeleteClick (selectedQuestion){
     const newQuestions = questions.filter((question) => question._id !== selectedQuestion._id);
     onModifyQuestion(newQuestions);
-    fetch(`/api/question/${selectedQuestion._id}`, {
+    fetch(`/api/questions/${selectedQuestion._id}`, {
       method: "DELETE"
     });
   }
