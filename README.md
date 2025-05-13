@@ -5,6 +5,7 @@
 
 - [About the Project](#about-the-project)
 - [Built With](#built-with)
+- [Contributors](#contributors)
 - [Getting Started](#getting-started)
     - [Prerequisites](#prerequisites)
     - [Installation Steps](#installation-steps)
@@ -55,6 +56,13 @@ This **“Who Wants to Be a Millionaire?”** style web game delivers fast-paced
 - **Containerization:**  
   [![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
 
+## Contributors
+
+| Name         | GitHub Profile                              |
+|--------------|---------------------------------------------|
+| Marcell Nagy | [Dyrun](https://github.com/Dyrun)           |
+| Ádám Németh  | [Nemetabe](https://github.com/nemetabe)     |
+| Bukari Máté  | [Matebukari](https://github.com/matebukari) |
 
 ## Getting Started
 
