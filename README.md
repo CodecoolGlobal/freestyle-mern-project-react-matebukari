@@ -116,7 +116,7 @@ cd freestyle-mern-project-react-matebukari
 #### Gameplay Walkthrough
 
 1. **Start a New Game**
-    - Click the **Play Now** button on the homepage.
+    - Click the **Start** button to start the game.
 
 2. **Answer Trivia Questions**
     - Each question displays **4 multiple-choice answers**.
